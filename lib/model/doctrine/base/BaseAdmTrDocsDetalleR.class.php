@@ -15,35 +15,35 @@ Doctrine_Manager::getInstance()->bindComponent('AdmTrDocsDetalleR', 'doctrine');
  * @property decimal $costo
  * @property decimal $precio
  * @property decimal $monto_impuesto
- * @property string $nombre_impuesto
+ * @property string $alias_impuesto
  * @property timestamp $timestamp
  * @property AdmTrDocs $AdmTrDocs
  * @property AdmMaItems $AdmMaItems
  * 
- * @method integer           getId()              Returns the current record's "id" value
- * @method integer           getIdDocumento()     Returns the current record's "id_documento" value
- * @method integer           getIdItems()         Returns the current record's "id_items" value
- * @method string            getDescripcion()     Returns the current record's "descripcion" value
- * @method decimal           getCantidad()        Returns the current record's "cantidad" value
- * @method decimal           getCosto()           Returns the current record's "costo" value
- * @method decimal           getPrecio()          Returns the current record's "precio" value
- * @method decimal           getMontoImpuesto()   Returns the current record's "monto_impuesto" value
- * @method string            getNombreImpuesto()  Returns the current record's "nombre_impuesto" value
- * @method timestamp         getTimestamp()       Returns the current record's "timestamp" value
- * @method AdmTrDocs         getAdmTrDocs()       Returns the current record's "AdmTrDocs" value
- * @method AdmMaItems        getAdmMaItems()      Returns the current record's "AdmMaItems" value
- * @method AdmTrDocsDetalleR setId()              Sets the current record's "id" value
- * @method AdmTrDocsDetalleR setIdDocumento()     Sets the current record's "id_documento" value
- * @method AdmTrDocsDetalleR setIdItems()         Sets the current record's "id_items" value
- * @method AdmTrDocsDetalleR setDescripcion()     Sets the current record's "descripcion" value
- * @method AdmTrDocsDetalleR setCantidad()        Sets the current record's "cantidad" value
- * @method AdmTrDocsDetalleR setCosto()           Sets the current record's "costo" value
- * @method AdmTrDocsDetalleR setPrecio()          Sets the current record's "precio" value
- * @method AdmTrDocsDetalleR setMontoImpuesto()   Sets the current record's "monto_impuesto" value
- * @method AdmTrDocsDetalleR setNombreImpuesto()  Sets the current record's "nombre_impuesto" value
- * @method AdmTrDocsDetalleR setTimestamp()       Sets the current record's "timestamp" value
- * @method AdmTrDocsDetalleR setAdmTrDocs()       Sets the current record's "AdmTrDocs" value
- * @method AdmTrDocsDetalleR setAdmMaItems()      Sets the current record's "AdmMaItems" value
+ * @method integer           getId()             Returns the current record's "id" value
+ * @method integer           getIdDocumento()    Returns the current record's "id_documento" value
+ * @method integer           getIdItems()        Returns the current record's "id_items" value
+ * @method string            getDescripcion()    Returns the current record's "descripcion" value
+ * @method decimal           getCantidad()       Returns the current record's "cantidad" value
+ * @method decimal           getCosto()          Returns the current record's "costo" value
+ * @method decimal           getPrecio()         Returns the current record's "precio" value
+ * @method decimal           getMontoImpuesto()  Returns the current record's "monto_impuesto" value
+ * @method string            getAliasImpuesto()  Returns the current record's "alias_impuesto" value
+ * @method timestamp         getTimestamp()      Returns the current record's "timestamp" value
+ * @method AdmTrDocs         getAdmTrDocs()      Returns the current record's "AdmTrDocs" value
+ * @method AdmMaItems        getAdmMaItems()     Returns the current record's "AdmMaItems" value
+ * @method AdmTrDocsDetalleR setId()             Sets the current record's "id" value
+ * @method AdmTrDocsDetalleR setIdDocumento()    Sets the current record's "id_documento" value
+ * @method AdmTrDocsDetalleR setIdItems()        Sets the current record's "id_items" value
+ * @method AdmTrDocsDetalleR setDescripcion()    Sets the current record's "descripcion" value
+ * @method AdmTrDocsDetalleR setCantidad()       Sets the current record's "cantidad" value
+ * @method AdmTrDocsDetalleR setCosto()          Sets the current record's "costo" value
+ * @method AdmTrDocsDetalleR setPrecio()         Sets the current record's "precio" value
+ * @method AdmTrDocsDetalleR setMontoImpuesto()  Sets the current record's "monto_impuesto" value
+ * @method AdmTrDocsDetalleR setAliasImpuesto()  Sets the current record's "alias_impuesto" value
+ * @method AdmTrDocsDetalleR setTimestamp()      Sets the current record's "timestamp" value
+ * @method AdmTrDocsDetalleR setAdmTrDocs()      Sets the current record's "AdmTrDocs" value
+ * @method AdmTrDocsDetalleR setAdmMaItems()     Sets the current record's "AdmMaItems" value
  * 
  * @package    sige
  * @subpackage model
@@ -134,7 +134,7 @@ abstract class BaseAdmTrDocsDetalleR extends sfDoctrineRecord
              'length' => 10,
              'scale' => '2',
              ));
-        $this->hasColumn('nombre_impuesto', 'string', 128, array(
+        $this->hasColumn('alias_impuesto', 'string', 128, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,

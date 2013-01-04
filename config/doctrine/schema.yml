@@ -678,7 +678,7 @@ AdmTrDocsDetalleR:
       default: '0.00'
       notnull: true
       autoincrement: false
-    nombre_impuesto:
+    alias_impuesto:
       type: string(128)
       fixed: false
       unsigned: false
