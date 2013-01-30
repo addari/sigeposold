@@ -17,7 +17,7 @@ abstract class BaseAdmTrDocsForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'                => new sfWidgetFormInputHidden(),
       'id_empresa'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaEmp'), 'add_empty' => false)),
-      'id_tipo'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('AdmTrDocsT'), 'add_empty' => false)),
+      'id_tipo'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaDocsT'), 'add_empty' => false)),
       'numero_documento'  => new sfWidgetFormInputText(),
       'id_contacto'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaContact'), 'add_empty' => false)),
       'fecha_emision'     => new sfWidgetFormDate(),
@@ -33,7 +33,7 @@ abstract class BaseAdmTrDocsForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'                => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'id_empresa'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaEmp'))),
-      'id_tipo'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmTrDocsT'))),
+      'id_tipo'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaDocsT'))),
       'numero_documento'  => new sfValidatorString(array('max_length' => 128, 'required' => false)),
       'id_contacto'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaContact'))),
       'fecha_emision'     => new sfValidatorDate(),

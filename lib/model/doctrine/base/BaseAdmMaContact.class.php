@@ -9,7 +9,7 @@ Doctrine_Manager::getInstance()->bindComponent('AdmMaContact', 'doctrine');
  * 
  * @property integer $id
  * @property string $nombre
- * @property string $tipo_contacto
+ * @property integer $tipo_contacto
  * @property integer $id_tipo_identificacion
  * @property string $numero_identificacion
  * @property string $direccion
@@ -25,7 +25,7 @@ Doctrine_Manager::getInstance()->bindComponent('AdmMaContact', 'doctrine');
  * 
  * @method integer             getId()                     Returns the current record's "id" value
  * @method string              getNombre()                 Returns the current record's "nombre" value
- * @method string              getTipoContacto()           Returns the current record's "tipo_contacto" value
+ * @method integer             getTipoContacto()           Returns the current record's "tipo_contacto" value
  * @method integer             getIdTipoIdentificacion()   Returns the current record's "id_tipo_identificacion" value
  * @method string              getNumeroIdentificacion()   Returns the current record's "numero_identificacion" value
  * @method string              getDireccion()              Returns the current record's "direccion" value
@@ -81,12 +81,12 @@ abstract class BaseAdmMaContact extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 255,
              ));
-        $this->hasColumn('tipo_contacto', 'string', 1, array(
-             'type' => 'string',
+        $this->hasColumn('tipo_contacto', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
-             'default' => 'J',
+             'default' => '1',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 1,

@@ -27,7 +27,7 @@ abstract class BaseAdmMaContactFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'nombre'                 => new sfValidatorPass(array('required' => false)),
-      'tipo_contacto'          => new sfValidatorPass(array('required' => false)),
+      'tipo_contacto'          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'id_tipo_identificacion' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('AdmMaIdentT'), 'column' => 'id')),
       'numero_identificacion'  => new sfValidatorPass(array('required' => false)),
       'direccion'              => new sfValidatorPass(array('required' => false)),
@@ -57,7 +57,7 @@ abstract class BaseAdmMaContactFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'                     => 'Number',
       'nombre'                 => 'Text',
-      'tipo_contacto'          => 'Text',
+      'tipo_contacto'          => 'Number',
       'id_tipo_identificacion' => 'ForeignKey',
       'numero_identificacion'  => 'Text',
       'direccion'              => 'Text',

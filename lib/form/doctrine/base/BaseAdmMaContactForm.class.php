@@ -31,7 +31,7 @@ abstract class BaseAdmMaContactForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'                     => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'nombre'                 => new sfValidatorString(array('max_length' => 255)),
-      'tipo_contacto'          => new sfValidatorString(array('max_length' => 1, 'required' => false)),
+      'tipo_contacto'          => new sfValidatorInteger(array('required' => false)),
       'id_tipo_identificacion' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaIdentT'), 'required' => false)),
       'numero_identificacion'  => new sfValidatorString(array('max_length' => 128, 'required' => false)),
       'direccion'              => new sfValidatorString(array('required' => false)),

@@ -1,0 +1,69 @@
+.vista-factura {
+    .comentario {
+        width: 98%;
+        height: 85px;
+    }
+
+    .campo-largo{
+        width: 688px;
+    }
+
+    table.tabla-items-factura {
+        tbody {
+            input.cantidad{
+                width: 48px;
+            }
+            input.descripcion{
+            
+            }
+            input.precio{
+                width: 90px;
+            }
+            input.impuesto{
+                width: 140px;
+            }
+            tr {
+                td {
+                    background: white;
+                } 
+            }
+        }
+        tfoot {
+            tr {
+                th {
+                    text-align: right;
+                }
+            }
+        }
+        thead{
+            tr {
+                th.codigo, th.cantidad, th.precio {
+                    width: 60px;
+                }
+                th.descripcion {
+                    width: 350px;
+                }
+                th.impuesto {
+                    width: 140px;
+                }
+                th.total-renglon {
+                    width: 140px;
+                }
+            }
+        }
+        .campo-numero { 
+            text-align: right;
+        }
+    }
+
+    .campo-numerico {
+        background: red;
+    }
+
+    .btn-buscar {
+        height: 20px;
+        margin-bottom: 10px;
+        position: absolute;
+        margin-left: -45px;
+    }
+}

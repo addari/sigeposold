@@ -20,7 +20,7 @@ Doctrine_Manager::getInstance()->bindComponent('AdmTrDocs', 'doctrine');
  * @property decimal $monto_descuento
  * @property string $comentarios
  * @property timestamp $timestamp
- * @property AdmTrDocsT $AdmTrDocsT
+ * @property AdmMaDocsT $AdmMaDocsT
  * @property AdmMaEmp $AdmMaEmp
  * @property AdmMaContact $AdmMaContact
  * @property Doctrine_Collection $AdmTrDocsDetalleR
@@ -39,7 +39,7 @@ Doctrine_Manager::getInstance()->bindComponent('AdmTrDocs', 'doctrine');
  * @method decimal             getMontoDescuento()    Returns the current record's "monto_descuento" value
  * @method string              getComentarios()       Returns the current record's "comentarios" value
  * @method timestamp           getTimestamp()         Returns the current record's "timestamp" value
- * @method AdmTrDocsT          getAdmTrDocsT()        Returns the current record's "AdmTrDocsT" value
+ * @method AdmMaDocsT          getAdmMaDocsT()        Returns the current record's "AdmMaDocsT" value
  * @method AdmMaEmp            getAdmMaEmp()          Returns the current record's "AdmMaEmp" value
  * @method AdmMaContact        getAdmMaContact()      Returns the current record's "AdmMaContact" value
  * @method Doctrine_Collection getAdmTrDocsDetalleR() Returns the current record's "AdmTrDocsDetalleR" collection
@@ -57,7 +57,7 @@ Doctrine_Manager::getInstance()->bindComponent('AdmTrDocs', 'doctrine');
  * @method AdmTrDocs           setMontoDescuento()    Sets the current record's "monto_descuento" value
  * @method AdmTrDocs           setComentarios()       Sets the current record's "comentarios" value
  * @method AdmTrDocs           setTimestamp()         Sets the current record's "timestamp" value
- * @method AdmTrDocs           setAdmTrDocsT()        Sets the current record's "AdmTrDocsT" value
+ * @method AdmTrDocs           setAdmMaDocsT()        Sets the current record's "AdmMaDocsT" value
  * @method AdmTrDocs           setAdmMaEmp()          Sets the current record's "AdmMaEmp" value
  * @method AdmTrDocs           setAdmMaContact()      Sets the current record's "AdmMaContact" value
  * @method AdmTrDocs           setAdmTrDocsDetalleR() Sets the current record's "AdmTrDocsDetalleR" collection
@@ -202,7 +202,7 @@ abstract class BaseAdmTrDocs extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('AdmTrDocsT', array(
+        $this->hasOne('AdmMaDocsT', array(
              'local' => 'id_tipo',
              'foreign' => 'id'));
 

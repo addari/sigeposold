@@ -12,5 +12,8 @@ class AdmMaContactFormFilter extends BaseAdmMaContactFormFilter
 {
   public function configure()
   {
+	$this->widgetSchema->setLabels(array(
+		'nombre'             => "Cliente",
+		));  	
   }
 }

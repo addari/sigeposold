@@ -16,11 +16,11 @@ AdmMaContact:
       notnull: true
       autoincrement: false
     tipo_contacto:
-      type: string(1)
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
-      default: J
+      default: '1'
       notnull: true
       autoincrement: false
     id_tipo_identificacion:
@@ -171,6 +171,120 @@ AdmMaContactT:
       autoincrement: false
   relations:
     AdmMaContactR:
+      local: id
+      foreign: id_tipo
+      type: many
+AdmMaDocsT:
+  connection: doctrine
+  tableName: adm_ma_docs_t
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    modulo:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    origen:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    tipo_fiscal:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    afecta_cuentas:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    signo_cuentas:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: +
+      notnull: true
+      autoincrement: false
+    contiene_renglones:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    afecta_inventario:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    reserva_inventario:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    signo_inventario:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: +
+      notnull: true
+      autoincrement: false
+    id_cuenta:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    activo:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    timestamp:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    AdmTrDocs:
       local: id
       foreign: id_tipo
       type: many
@@ -331,6 +445,14 @@ AdmMaItems:
       fixed: false
       unsigned: false
       primary: false
+      notnull: true
+      autoincrement: false
+    costo:
+      type: 'decimal(10, 2)'
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0.00'
       notnull: true
       autoincrement: false
     precio:
@@ -595,7 +717,7 @@ AdmTrDocs:
       notnull: true
       autoincrement: false
   relations:
-    AdmTrDocsT:
+    AdmMaDocsT:
       local: id_tipo
       foreign: id
       type: one
@@ -752,109 +874,3 @@ AdmTrDocsFiscalR:
       local: id_documento
       foreign: id
       type: one
-AdmTrDocsT:
-  connection: doctrine
-  tableName: adm_tr_docs_t
-  columns:
-    id:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: true
-    nombre:
-      type: string(100)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    modulo:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    origen:
-      type: string(50)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    tipo_fiscal:
-      type: integer(1)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: '0'
-      notnull: true
-      autoincrement: false
-    afecta_cuentas:
-      type: integer(1)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: '0'
-      notnull: true
-      autoincrement: false
-    signo_cuentas:
-      type: string(1)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: +
-      notnull: true
-      autoincrement: false
-    contiene_renglones:
-      type: integer(1)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: '0'
-      notnull: true
-      autoincrement: false
-    afecta_inventario:
-      type: integer(1)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: '0'
-      notnull: true
-      autoincrement: false
-    reserva_inventario:
-      type: integer(1)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: '0'
-      notnull: true
-      autoincrement: false
-    signo_inventario:
-      type: string(1)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: +
-      notnull: true
-      autoincrement: false
-    id_cuenta:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    timestamp:
-      type: timestamp(25)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-  relations:
-    AdmTrDocs:
-      local: id
-      foreign: id_tipo
-      type: many

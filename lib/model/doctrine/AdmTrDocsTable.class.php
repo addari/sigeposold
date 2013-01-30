@@ -16,4 +16,17 @@ class AdmTrDocsTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('AdmTrDocs');
     }
+
+
+    public static function getSumRenglones($id)
+    {
+      $query = Doctrine_Query::create()
+        ->addSelect("SUM(a.monto_impuesto) as acu_monto_impuesto")
+        ->addSelect("SUM(a.precio * a.cantidad) as acu_precio")
+        ->from('AdmTrDocsDetalleR a')
+        ->where('a.id_documento = ?', $id)->fetchOne();
+
+      return $query;
+    }      
+
 }

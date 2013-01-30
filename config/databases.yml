@@ -7,11 +7,11 @@ prod:
     param:
       dsn:      mysql:host=localhost;dbname=sigepos
       username: root
-      password: desarroll0
+      password: 
 dev:
   doctrine:
     class: sfDoctrineDatabase
     param:
       dsn:      mysql:host=localhost;dbname=sigepos
       username: root
-      password: desarroll0      
+      password:      

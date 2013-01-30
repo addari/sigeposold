@@ -12,4 +12,15 @@
  */
 class AdmTrDocs extends BaseAdmTrDocs
 {
+	public function save (Doctrine_Connection $con = null)
+	{
+	   return parent::save($con);
+	}
+
+	public function actualizarAcumulados()
+	{
+	   $renglon = $this->getTable()->getSumRenglones($this->getId());
+	   $this->setMontoImpuesto  ( $renglon->acu_monto_impuesto );
+	   $this->setMontoGrabado	( $renglon->acu_precio         );
+	}
 }

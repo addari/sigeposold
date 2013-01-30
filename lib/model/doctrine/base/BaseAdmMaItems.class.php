@@ -10,6 +10,7 @@ Doctrine_Manager::getInstance()->bindComponent('AdmMaItems', 'doctrine');
  * @property integer $id
  * @property integer $id_tipo
  * @property string $nombre
+ * @property decimal $costo
  * @property decimal $precio
  * @property integer $id_impuesto
  * @property timestamp $timestamp
@@ -20,6 +21,7 @@ Doctrine_Manager::getInstance()->bindComponent('AdmMaItems', 'doctrine');
  * @method integer             getId()                Returns the current record's "id" value
  * @method integer             getIdTipo()            Returns the current record's "id_tipo" value
  * @method string              getNombre()            Returns the current record's "nombre" value
+ * @method decimal             getCosto()             Returns the current record's "costo" value
  * @method decimal             getPrecio()            Returns the current record's "precio" value
  * @method integer             getIdImpuesto()        Returns the current record's "id_impuesto" value
  * @method timestamp           getTimestamp()         Returns the current record's "timestamp" value
@@ -29,6 +31,7 @@ Doctrine_Manager::getInstance()->bindComponent('AdmMaItems', 'doctrine');
  * @method AdmMaItems          setId()                Sets the current record's "id" value
  * @method AdmMaItems          setIdTipo()            Sets the current record's "id_tipo" value
  * @method AdmMaItems          setNombre()            Sets the current record's "nombre" value
+ * @method AdmMaItems          setCosto()             Sets the current record's "costo" value
  * @method AdmMaItems          setPrecio()            Sets the current record's "precio" value
  * @method AdmMaItems          setIdImpuesto()        Sets the current record's "id_impuesto" value
  * @method AdmMaItems          setTimestamp()         Sets the current record's "timestamp" value
@@ -71,6 +74,17 @@ abstract class BaseAdmMaItems extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 255,
+             ));
+        $this->hasColumn('costo', 'decimal', 10, array(
+             'type' => 'decimal',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'default' => '0.00',
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 10,
+             'scale' => '2',
              ));
         $this->hasColumn('precio', 'decimal', 10, array(
              'type' => 'decimal',

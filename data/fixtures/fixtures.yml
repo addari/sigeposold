@@ -15,3 +15,13 @@
 #     password: changeme
 #     name:     Kris Wallsmith
 #     email:    kris.wallsmith@symfony-project.com
+
+AdmMaItems:
+  id_tipo: 1
+
+  nombre: "Producto\n"
+
+  precio: 240
+
+  id_impuesto: 1
+  
