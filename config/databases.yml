@@ -6,12 +6,12 @@ prod:
     class: sfDoctrineDatabase
     param:
       dsn:      mysql:host=localhost;dbname=sigepos
-      username: root
-      password: 
+      username: sigepos
+      password: sigepos
 dev:
   doctrine:
     class: sfDoctrineDatabase
     param:
       dsn:      mysql:host=localhost;dbname=sigepos
-      username: root
-      password:      
+      username: sigepos
+      password: sigepos
