@@ -16,4 +16,12 @@ class AdmMaDocsTTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('AdmMaDocsT');
     }
+
+    public static function getTiposByModulo($id){
+		$q = Doctrine_Query::create()
+	        ->from('AdmMaDocsT a')
+	        ->where('a.modulo = ?', $id);
+	    return $q;
+    }
+
 }

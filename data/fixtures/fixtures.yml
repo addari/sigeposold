@@ -16,12 +16,9 @@
 #     name:     Kris Wallsmith
 #     email:    kris.wallsmith@symfony-project.com
 
-AdmMaItems:
-  id_tipo: 1
-
-  nombre: "Producto\n"
-
-  precio: 240
-
-  id_impuesto: 1
-  
+AdmMaContact:
+  nombre:                Foo Bar
+  numero_identificacion: 421412
+  direccion:             Panama
+  telefonos:             60649071
+  email:                 foobar@demostracion.com

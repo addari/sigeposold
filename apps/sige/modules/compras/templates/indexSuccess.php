@@ -1,5 +1,4 @@
-<?php include_partial( 'filtro', array( "form_filter" => $form_filter ) ) ?>
-
+<?php include_partial( 'templates', array( "form_filter" => $form_filter ) ) ?>
 <div class="btn-toolbar">
   <div class="btn-group">
     <a class="btn" href="<?php echo url_for('facturacion/new') ?>"><span class="icon-plus"></span> Crear</a> 
@@ -9,7 +8,7 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th class="btn-info" colspan="8"><span class='icon-list-alt'></span> filtroción</th>
+      <th class="btn-info" colspan="8"><span class='icon-list-alt'></span> Facturación</th>
     </tr>
     <tr class="btn-inverse">
       <th>Id</th>
@@ -29,7 +28,7 @@
       <td><?php echo $adm_tr_docs->AdmMaContact->getNombre() ?></td>
       <td><?php echo $adm_tr_docs->getDateTimeObject("fecha_emision")->format("d/m/Y") ?></td>
       <td><?php echo $adm_tr_docs->getDateTimeObject("fecha_vencimiento")->format("d/m/Y") ?></td>
-      <td class="total-columna-number"><?= Helpers::FormatearMonto($adm_tr_docs->monto_exento + $adm_tr_docs->monto_grabado + $adm_tr_docs->monto_impuesto) ?></td>
+      <td class="total-columna-number"><?= Helpers::FormatearMonto($adm_tr_docs->getTotalDocumento()) ?></td>
       <td>
         <a class="btn" href="<?php echo url_for('facturacion/show?id='.$adm_tr_docs->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
         <?php if ( $adm_tr_docs->AdmTrDocsFiscalR->count() == 0 ): ?>
@@ -54,7 +53,7 @@
       <td class="total-columna-number">
         <?php $sumTotal = 0; ?>
         <?php foreach($adm_tr_docss->getResults() as $documento): ?>
-            <?php $sumTotal += $documento->monto_exento + $documento->monto_grabado + $documento->monto_impuesto; ?>
+            <?php $sumTotal += $documento->getTotalDocumento(); ?>
         <?php endforeach; ?>
             <?= Helpers::FormatearMonto( $sumTotal ) ?>
       </td>
@@ -85,39 +84,3 @@
    </ul>
   </div>
 <?php endif; ?>
-
-
-<script type="text/javascript">
-
-$(function(){
-  //Ejecución de funcionalidad de vista
-  $("#filtro_fecha_emision_from")
-    .datepicker()
-    .on('changeDate', function(ev){
-        var fechaSeleccion = App.Helpers.getFechaByTimeTamp( ev.date.getTime() );
-        $("#filtro_fecha_vencimiento").val( fechaSeleccion );
-        $(this).datepicker('hide');
-      });
-  $("#filtro_fecha_emision_to")
-    .datepicker()
-    .on('changeDate', function(ev){
-          $(this).datepicker('hide');
-    });
-
-  //Ejecución de funcionalidad de vista
-  $("#filtro_fecha_vencimiento_from")
-    .datepicker()
-    .on('changeDate', function(ev){
-        var fechaSeleccion = App.Helpers.getFechaByTimeTamp( ev.date.getTime() );
-        $("#filtro_fecha_vencimiento").val( fechaSeleccion );
-        $(this).datepicker('hide');
-    });
-  $("#filtro_fecha_vencimiento_to")
-    .datepicker()
-    .on('changeDate', function(ev){
-        $(this).datepicker('hide');
-    });   
-
-});
-
-</script>

@@ -23,10 +23,21 @@ App.Helpers.Mensaje = function(opt){
 	return output;
 }
 
+App.Helpers.MensajeNotificacion = function(opt){
+	var selector = opt.selector || "#mensaje-notificacion";
+	$(selector).html( App.Helpers.Mensaje( opt ) );
+}
+
+
 App.Helpers.RedondearNumero = function( valor ){
 	return valor.toFixed(2);
 }
 
 App.Helpers.FormatearNumero = function( moneda ){
 	return accounting.formatNumber(moneda,2,'.',',');
+}
+
+App.Helpers.getFechaByTimeTamp = function( feTimeTamp ){
+ 	var sFecha = moment(feTimeTamp).format( App.Param.FormatoFecha );
+	return sFecha
 }

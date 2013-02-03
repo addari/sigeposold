@@ -20,7 +20,8 @@ class AdmTrDocs extends BaseAdmTrDocs
 	public function actualizarAcumulados()
 	{
 	   $renglon = $this->getTable()->getSumRenglones($this->getId());
-	   $this->setMontoImpuesto  ( $renglon->acu_monto_impuesto );
-	   $this->setMontoGrabado	( $renglon->acu_precio         );
+	   $this->setMontoImpuesto  ( $renglon["acu_impuesto"] );
+	   $this->setMontoGrabado	( $renglon["acu_grabado"]  );
+	   $this->setMontoExento	( $renglon["acu_exento"]   );
 	}
 }

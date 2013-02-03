@@ -16,4 +16,10 @@ class AdmMaContactTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('AdmMaContact');
     }
+
+    public static function getContactos($campo){
+        $q = Doctrine_Query::create()
+            ->from("AdmMaContact a");
+        return $q;
+    }    
 }

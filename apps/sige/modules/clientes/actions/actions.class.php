@@ -71,24 +71,18 @@ class clientesActions extends sfActions
     }
   }
 
-  public function executeBuscarContactoFactura(){
-    $filtro   = $this->getRequestParameter("adm_ma_contact_filters");
-    $criterio = $this->getRequestParameter("criterio");
-    if ( $criterio ) {
-      $filtro = array ( "nombre" => array ( "text" => $criterio ) );
-    }
+  public function executeBuscarContactoFactura(sfWebRequest $request)
+  {
+      $filtro = $this->getRequestParameter("filtro");
+      
+      $this->form_filter = new AdmMaContactFormFilter($filtro);
+      $this->form_filter->bind($filtro);
+      $this->adm_ma_contacts = new sfDoctrinePager('AdmMaContact', sfConfig::get("app_paginacion") );
+      // $this->adm_ma_contacts->setQuery($this->form_filter->getQuery());
+      $this->adm_ma_contacts->setPage($request->getParameter('pagina', 1));
+      $this->adm_ma_contacts->init();
 
-    $this->form_filter = new AdmMaContactFormFilter($filtro);
-    $this->adm_ma_contacts = new sfDoctrinePager('AdmMaContact', sfConfig::get("app_paginacion") );
-    $this->adm_ma_contacts->getQuery()->from("AdmMaContact");
-
-    if( $filtro["nombre"]["text"] ) {
-      $criterio = $filtro["nombre"]["text"];
-      $this->adm_ma_contacts->getQuery()->where("upper(nombre) like upper('%".$criterio."%')");
-    }
-
-    $this->adm_ma_contacts->setPage($this->getRequestParameter("pagina"),1);
-    $this->adm_ma_contacts->init();
-    $this->setLayout("layout_mini");
+      //refer back to the index template
+      $this->setLayout("layout_mini");
   }  
 }

@@ -5,6 +5,7 @@ agregarContacto = function ( contacto ) {
 }
 </script>
 <form action="<?php echo url_for('clientes/buscarContactoFactura') ?>" method="post">
+<?php echo $form_filter->renderHiddenFields(); ?>
 <table class="table table-bordered sin-lineas-border">
     <thead>
     <tr>
@@ -69,11 +70,6 @@ agregarContacto = function ( contacto ) {
 <!-- Inicio de paginación -->
 
 <?php if ($adm_ma_contacts->haveToPaginate()): ?>
-  <?php 
-    $criterio = $form_filter['nombre']->getValue();
-    $criterio = $criterio["text"];
-    $params = ($criterio)?"&criterio=".$criterio:"";
-  ?>
   <div class="pagination">
     <ul>
       <li><a href="<?php echo url_for('clientes/buscarContactoFactura') ?>?pagina=1<?= $params ?>">«</a></li>

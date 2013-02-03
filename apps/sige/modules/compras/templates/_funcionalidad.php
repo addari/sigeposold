@@ -342,7 +342,8 @@ $(function(){
 			}else{
 				$(".mensaje").html ("");
 			}
-	        $("#factura_fecha_vencimiento").datepicker('hide');
+	        $(this).datepicker('hide');
+        	$(this).datepicker('hide');
     	});
 
 });

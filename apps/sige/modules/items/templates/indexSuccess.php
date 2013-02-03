@@ -16,17 +16,13 @@
   <tbody>
     <?php foreach ($adm_ma_itemss as $adm_ma_items): ?>
     <tr>
-            <td><?php echo $adm_ma_items->getId() ?></td>
+      <td><?php echo $adm_ma_items->getId() ?></td>
       <td><?php echo $adm_ma_items->getIdTipo() ?></td>
-            
       <td><?php echo $adm_ma_items->getNombre() ?></td>
-            
       <td><?php echo $adm_ma_items->getPrecio() ?></td>
-            
       <td><?php echo $adm_ma_items->getIdImpuesto() ?></td>
-            
       <td><?php echo $adm_ma_items->getTimestamp() ?></td>
-            <td><a href="<?php echo url_for('items/edit?id='.$adm_ma_items->getId()) ?>"><?php echo "<span class='icon-pencil'></span> Editar" ?></a></td>
+      <td><a href="<?php echo url_for('items/edit?id='.$adm_ma_items->getId()) ?>"><?php echo "<span class='icon-pencil'></span> Editar" ?></a></td>
             
     </tr>
     <?php endforeach; ?>

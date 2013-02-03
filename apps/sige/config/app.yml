@@ -4,3 +4,5 @@
 # default values
 all:
   paginacion: 10
+  modulos:
+    facturacion: 3
