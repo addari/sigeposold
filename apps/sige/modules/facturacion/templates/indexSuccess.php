@@ -29,7 +29,7 @@
       <td><?php echo $adm_tr_docs->AdmMaContact->getNombre() ?></td>
       <td><?php echo $adm_tr_docs->getDateTimeObject("fecha_emision")->format("d/m/Y") ?></td>
       <td><?php echo $adm_tr_docs->getDateTimeObject("fecha_vencimiento")->format("d/m/Y") ?></td>
-      <td class="total-columna-number"><?= Helpers::FormatearMonto($adm_tr_docs->monto_exento + $adm_tr_docs->monto_grabado + $adm_tr_docs->monto_impuesto) ?></td>
+      <td class="total-columna-number"><?= Helpers::FormatearMonto($adm_tr_docs->monto_exento + $adm_tr_docs->monto_gravado + $adm_tr_docs->monto_impuesto) ?></td>
       <td>
         <a class="btn" href="<?php echo url_for('facturacion/show?id='.$adm_tr_docs->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
         <?php if ( $adm_tr_docs->AdmTrDocsFiscalR->count() == 0 ): ?>
@@ -54,7 +54,7 @@
       <td class="total-columna-number">
         <?php $sumTotal = 0; ?>
         <?php foreach($adm_tr_docss->getResults() as $documento): ?>
-            <?php $sumTotal += $documento->monto_exento + $documento->monto_grabado + $documento->monto_impuesto; ?>
+            <?php $sumTotal += $documento->monto_exento + $documento->monto_gravado + $documento->monto_impuesto; ?>
         <?php endforeach; ?>
             <?= Helpers::FormatearMonto( $sumTotal ) ?>
       </td>

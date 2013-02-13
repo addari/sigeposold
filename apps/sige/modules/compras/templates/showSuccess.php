@@ -31,7 +31,7 @@
     </tr>
     <tr>
       <th>Monto grabado:</th>
-      <td><?php echo Helpers::FormatearMonto($adm_tr_docs->getMontoGrabado()) ?></td>
+      <td><?php echo Helpers::FormatearMonto($adm_tr_docs->getMontoGravado()) ?></td>
     </tr>
     <tr>
       <th>Monto Impuesto:</th>

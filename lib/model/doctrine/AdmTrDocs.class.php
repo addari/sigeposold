@@ -21,7 +21,7 @@ class AdmTrDocs extends BaseAdmTrDocs
 	{
 	   $renglon = $this->getTable()->getSumRenglones($this->getId());
 	   $this->setMontoImpuesto  ( $renglon["acu_impuesto"] );
-	   $this->setMontoGrabado	( $renglon["acu_grabado"]  );
+	   $this->setMontoGravado	( $renglon["acu_gravado"]  );
 	   $this->setMontoExento	( $renglon["acu_exento"]   );
 	}
 }

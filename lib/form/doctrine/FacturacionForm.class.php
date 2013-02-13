@@ -26,7 +26,7 @@ class FacturacionForm extends BaseAdmTrDocsForm
       'fecha_emision'     => new sfWidgetFormInputText(),
       'fecha_vencimiento' => new sfWidgetFormInputText(),
       'monto_exento'      => new sfWidgetFormInputText(),
-      'monto_grabado'     => new sfWidgetFormInputText(),
+      'monto_gravado'     => new sfWidgetFormInputText(),
       'monto_impuesto'    => new sfWidgetFormInputText(),
       'monto_descuento'   => new sfWidgetFormInputText(),
       'comentarios'       => new sfWidgetFormTextarea(array(),array("class"=>"comentario")),
@@ -52,7 +52,7 @@ class FacturacionForm extends BaseAdmTrDocsForm
                                              array('required'=>"campo requerido.")
                                              ),
       'monto_exento'      => new sfValidatorNumber(array('required' => false)),
-      'monto_grabado'     => new sfValidatorNumber(array('required' => false)),
+      'monto_gravado'     => new sfValidatorNumber(array('required' => false)),
       'monto_impuesto'    => new sfValidatorNumber(array('required' => false)),
       'monto_descuento'   => new sfValidatorNumber(array('required' => false)),
       'comentarios'       => new sfValidatorString(array('required' => false)),

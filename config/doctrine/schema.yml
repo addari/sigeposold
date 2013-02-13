@@ -678,7 +678,7 @@ AdmTrDocs:
       default: '0.00'
       notnull: true
       autoincrement: false
-    monto_grabado:
+    monto_gravado:
       type: 'decimal(10, 2)'
       fixed: false
       unsigned: false

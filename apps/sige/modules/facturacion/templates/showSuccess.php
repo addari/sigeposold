@@ -24,7 +24,7 @@
     <tr>
       <th class="columna-show">Total documento:</th>
       <td>
-        <?= Helpers::FormatearMonto( $adm_tr_docs->getMontoExento() + $adm_tr_docs->getMontoGrabado() + $adm_tr_docs->getMontoImpuesto() ) ?>
+        <?= Helpers::FormatearMonto( $adm_tr_docs->getMontoExento() + $adm_tr_docs->getMontoGravado() + $adm_tr_docs->getMontoImpuesto() ) ?>
       </td>
     </tr>
     <tr>
@@ -78,7 +78,7 @@
         Total
       </td>
       <td class="total-columna-number">
-        <?= Helpers::FormatearMonto( $adm_tr_docs->getMontoExento() + $adm_tr_docs->getMontoGrabado() + $adm_tr_docs->getMontoImpuesto() ) ?>
+        <?= Helpers::FormatearMonto( $adm_tr_docs->getMontoExento() + $adm_tr_docs->getMontoGravado() + $adm_tr_docs->getMontoImpuesto() ) ?>
       </td>
     </tr>
   <tfool>   

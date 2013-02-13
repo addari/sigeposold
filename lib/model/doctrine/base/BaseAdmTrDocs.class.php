@@ -15,7 +15,7 @@ Doctrine_Manager::getInstance()->bindComponent('AdmTrDocs', 'doctrine');
  * @property date $fecha_emision
  * @property date $fecha_vencimiento
  * @property decimal $monto_exento
- * @property decimal $monto_grabado
+ * @property decimal $monto_gravado
  * @property decimal $monto_impuesto
  * @property decimal $monto_descuento
  * @property string $comentarios
@@ -34,7 +34,7 @@ Doctrine_Manager::getInstance()->bindComponent('AdmTrDocs', 'doctrine');
  * @method date                getFechaEmision()      Returns the current record's "fecha_emision" value
  * @method date                getFechaVencimiento()  Returns the current record's "fecha_vencimiento" value
  * @method decimal             getMontoExento()       Returns the current record's "monto_exento" value
- * @method decimal             getMontoGrabado()      Returns the current record's "monto_grabado" value
+ * @method decimal             getMontoGravado()      Returns the current record's "monto_gravado" value
  * @method decimal             getMontoImpuesto()     Returns the current record's "monto_impuesto" value
  * @method decimal             getMontoDescuento()    Returns the current record's "monto_descuento" value
  * @method string              getComentarios()       Returns the current record's "comentarios" value
@@ -52,7 +52,7 @@ Doctrine_Manager::getInstance()->bindComponent('AdmTrDocs', 'doctrine');
  * @method AdmTrDocs           setFechaEmision()      Sets the current record's "fecha_emision" value
  * @method AdmTrDocs           setFechaVencimiento()  Sets the current record's "fecha_vencimiento" value
  * @method AdmTrDocs           setMontoExento()       Sets the current record's "monto_exento" value
- * @method AdmTrDocs           setMontoGrabado()      Sets the current record's "monto_grabado" value
+ * @method AdmTrDocs           setMontoGravado()      Sets the current record's "monto_gravado" value
  * @method AdmTrDocs           setMontoImpuesto()     Sets the current record's "monto_impuesto" value
  * @method AdmTrDocs           setMontoDescuento()    Sets the current record's "monto_descuento" value
  * @method AdmTrDocs           setComentarios()       Sets the current record's "comentarios" value
@@ -146,7 +146,7 @@ abstract class BaseAdmTrDocs extends sfDoctrineRecord
              'length' => 10,
              'scale' => '2',
              ));
-        $this->hasColumn('monto_grabado', 'decimal', 10, array(
+        $this->hasColumn('monto_gravado', 'decimal', 10, array(
              'type' => 'decimal',
              'fixed' => 0,
              'unsigned' => false,

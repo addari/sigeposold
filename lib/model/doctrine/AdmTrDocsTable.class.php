@@ -24,13 +24,13 @@ class AdmTrDocsTable extends Doctrine_Table
         ->from('AdmTrDocsDetalleR a')
         ->where('a.id_documento = ?', $id)->execute();
 
-      $acu_impuesto = $acu_grabado = $acu_exento = 0;
+      $acu_impuesto = $acu_gravado = $acu_exento = 0;
 
       foreach( $renglones as $renglon){
         $acu_impuesto += $renglon->getMontoImpuesto();
 
         if( $renglon->getMontoImpuesto() > 0 ) {
-          $acu_grabado += $renglon->getPrecio() * $renglon->getCantidad();
+          $acu_gravado += $renglon->getPrecio() * $renglon->getCantidad();
         } else if( $renglon->getMontoImpuesto() == 0 ) {
           $acu_exento  += $renglon->getPrecio() * $renglon->getCantidad();
         }
@@ -39,7 +39,7 @@ class AdmTrDocsTable extends Doctrine_Table
 
       return array(
         "acu_impuesto" => $acu_impuesto,
-        "acu_grabado"  => $acu_grabado,
+        "acu_gravado"  => $acu_gravado,
         "acu_exento"   => $acu_exento
         );
     }      
@@ -47,7 +47,7 @@ class AdmTrDocsTable extends Doctrine_Table
     public static function TotalDocumentos(){
         $q = Doctrine_Query::create()
             ->select("*")
-            ->addSelect("(monto_exento + monto_grabado + monto_impuesto) as total_documento")
+            ->addSelect("(monto_exento + monto_gravado + monto_impuesto) as total_documento")
             ->from("AdmTrDocs a");
         return $q;
     }
