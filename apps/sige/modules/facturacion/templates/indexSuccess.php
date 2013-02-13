@@ -9,7 +9,7 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th class="btn-info" colspan="8"><span class='icon-list-alt'></span> filtroción</th>
+      <th class="btn-info" colspan="8"><span class='icon-list-alt'></span> Lista</th>
     </tr>
     <tr class="btn-inverse">
       <th>Id</th>
@@ -35,12 +35,12 @@
         <?php if ( $adm_tr_docs->AdmTrDocsFiscalR->count() == 0 ): ?>
           <a class="btn" href="<?php echo url_for('facturacion/edit?id='.$adm_tr_docs->getId()) ?>" title="Modificar"><span class='icon-pencil'></span></a>
         <?php else: ?>
-          <a class="btn disabled" href="#" title="Modificar" onclick="javascript: App.Helpers.MensajeNotificacion ({tipo: 'error', mensaje: 'No es posible editar el documento por tener impresión fiscal.',selector:'#mensaje-notifiacion'});"><span class='icon-pencil'></span></a>
+          <a class="btn disabled" href="#" title="Modificar" onclick="javascript: App.Helpers.MensajeNotificacion ({tipo: 'error', mensaje: 'No es posible editar el documento por tener impresión fiscal.',selector:'#mensaje-notifiacion'});return false;"><span class='icon-pencil'></span></a>
         <?php endif; ?>
         <?php if ( $adm_tr_docs->AdmTrDocsDetalleR->count() == 0 ): ?>
           <?php echo link_to('<span class="icon-trash"></span>', 'facturacion/delete?id='.$adm_tr_docs->getId(), array('method' => 'delete', 'confirm' => '¿Realmente desea eliminar éste registro?' , 'class' => 'btn', "title"=>"Eliminar")) ?>
         <?php else: ?>
-          <a class="btn disabled" href="#" title="Eliminar" onclick="javascript: App.Helpers.MensajeNotificacion ({tipo: 'error', mensaje: 'Este documento contiene items, por favor elimine los items para poder eliminarlo.',selector:'#mensaje-notifiacion'});"><span class='icon-trash'></span></a>
+          <a class="btn disabled" href="#" title="Eliminar" onclick="javascript: App.Helpers.MensajeNotificacion ({tipo: 'error', mensaje: 'Este documento contiene items, por favor elimine los items para poder eliminarlo.',selector:'#mensaje-notifiacion'});return false;"><span class='icon-trash'></span></a>
         <?php endif; ?>
       </td>
     </tr>
@@ -73,15 +73,15 @@
 <?php if ($adm_tr_docss->haveToPaginate()): ?>
   <div class="pagination pagination-centered">
     <ul>
-      <li><a href="<?php echo url_for('facturacion/index') ?>?page=1">«</a></li>
+      <li><a href="<?php echo url_for('facturacion/navegacion') ?>?page=1">«</a></li>
       <?php foreach ($adm_tr_docss->getLinks() as $page): ?>
         <?php if ($page == $adm_tr_docss->getPage()): ?>
           <li class="disabled"><a href="#"><b><?php echo $page ?></b></a></li>
         <?php else: ?>
-          <li><a href="<?php echo url_for('facturacion/index') ?>?page=<?php echo $page ?>"><?php echo $page ?></a></li>
+          <li><a href="<?php echo url_for('facturacion/navegacion') ?>?page=<?php echo $page ?>"><?php echo $page ?></a></li>
         <?php endif; ?>
       <?php endforeach; ?>
-      <li><a href="<?php echo url_for('facturacion/index') ?>?page=<?php echo $adm_tr_docss->getLastPage() ?>">»</a></li>
+      <li><a href="<?php echo url_for('facturacion/navegacion') ?>?page=<?php echo $adm_tr_docss->getLastPage() ?>">»</a></li>
    </ul>
   </div>
 <?php endif; ?>

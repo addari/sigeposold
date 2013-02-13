@@ -4,7 +4,7 @@ agregarContacto = function ( contacto ) {
   window.close();
 }
 </script>
-<form action="<?php echo url_for('clientes/buscarContactoFactura') ?>" method="post">
+<form action="<?php echo url_for('clientes/filtrarContactoFactura') ?>" method="post">
 <?php echo $form_filter->renderHiddenFields(); ?>
 <table class="table table-bordered sin-lineas-border">
     <thead>
@@ -70,17 +70,17 @@ agregarContacto = function ( contacto ) {
 <!-- Inicio de paginación -->
 
 <?php if ($adm_ma_contacts->haveToPaginate()): ?>
-  <div class="pagination">
+  <div class="pagination pagination-centered">
     <ul>
-      <li><a href="<?php echo url_for('clientes/buscarContactoFactura') ?>?pagina=1<?= $params ?>">«</a></li>
+      <li><a href="<?php echo url_for('clientes/navegacionContactoFactura') ?>?page=1">«</a></li>
       <?php foreach ($adm_ma_contacts->getLinks() as $page): ?>
         <?php if ($page == $adm_ma_contacts->getPage()): ?>
           <li class="disabled"><a href="#"><b><?php echo $page ?></b></a></li>
         <?php else: ?>
-          <li><a href="<?php echo url_for('clientes/buscarContactoFactura') ?>?pagina=<?php echo $page ?><?= $params ?>"><?php echo $page ?></a></li>
+          <li><a href="<?php echo url_for('clientes/navegacionContactoFactura') ?>?page=<?php echo $page ?>"><?php echo $page ?></a></li>
         <?php endif; ?>
       <?php endforeach; ?>
-      <li><a href="<?php echo url_for('clientes/buscarContactoFactura') ?>?pagina=<?php echo $adm_ma_contacts->getLastPage() ?><?= $params ?>">»</a></li>
+      <li><a href="<?php echo url_for('clientes/navegacionContactoFactura') ?>?page=<?php echo $adm_ma_contacts->getLastPage() ?>">»</a></li>
    </ul>
   </div>
 <?php endif; ?>

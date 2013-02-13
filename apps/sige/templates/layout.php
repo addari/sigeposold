@@ -49,6 +49,17 @@
       $(document).ready(function(){
         //initialize components genericos
         $("*").tooltip();
+        //inicialize filters generales       
+        $(".filtro-modulo-general").find("tbody").hide();
+
+        $(".filtro-modulo-general").find("thead").click(function(e){
+          if( $(this).parent().find("tbody").is(":visible") ){
+            $(this).parent().find("tbody").hide();
+          }else{
+            $(this).parent().find("tbody").show("delay");
+          }
+        });
+
       });      
     </script>
     <?= javascript_include_tag("helpers.js") ?>

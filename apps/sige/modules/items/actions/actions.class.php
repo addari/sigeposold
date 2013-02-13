@@ -10,6 +10,25 @@
  */
 class itemsActions extends sfActions
 {
+
+  private function setFilter($criterios){
+    $this->getUser()->setAttribute("filtro.items.activo", true);  
+    $this->getUser()->setAttribute("filtro.items", $criterios);
+  }
+  
+  private function getFilter(){
+    return $this->getUser()->getAttribute("filtro.items");
+  }
+  
+  private function hasFilter(){
+      return $this->getUser()->getAttribute("filtro.items.activo", false);  
+  }
+
+  private function clearFilter(){
+      $this->getUser()->setAttribute("filtro.items.activo", false);  
+      $this->getUser()->setAttribute("filtro.items", "");
+  }
+
   public function executeIndex(sfWebRequest $request)
   {
     $this->adm_ma_itemss = Doctrine_Core::getTable('AdmMaItems')
@@ -71,24 +90,68 @@ class itemsActions extends sfActions
     }
   }
 
-  public function executeBuscarItemFactura(){
-    $filtro   = $this->getRequestParameter("adm_ma_items_filters");
-    $criterio = $this->getRequestParameter("criterio");
-    if ( $criterio ) {
-      $filtro = array ( "nombre" => array ( "text" => $criterio ) );
-    }
-
-    $this->form_filter = new AdmMaItemsFormFilter($filtro);
-    $this->adm_ma_itemss = new sfDoctrinePager('AdmMaItems', sfConfig::get("app_paginacion") );
-    $this->adm_ma_itemss->getQuery()->from("AdmMaItems");
-
-    if( $filtro["nombre"]["text"] ) {
-      $criterio = $filtro["nombre"]["text"];
-      $this->adm_ma_itemss->getQuery()->where("upper(nombre) like upper('%".$criterio."%')");
-    }
-
-    $this->adm_ma_itemss->setPage($this->getRequestParameter("pagina"),1);
+  public function executeBuscarItemFactura(sfWebRequest $request){
+    $this->clearFilter();
+    $this->form_filter = new AdmMaItemsFormFilter();
+    $max_paginacion = sfConfig::get("app_paginacion");
+    $pagina         = $request->getParameter('page',1);
+    $this->adm_ma_itemss = new sfDoctrinePager('AdmMaItems', $max_paginacion);
+    $this->adm_ma_itemss->setPage( $pagina );
     $this->adm_ma_itemss->init();
     $this->setLayout("layout_mini");
   }
+
+  public function executeNavegacionItemFactura(sfWebRequest $request)
+  {
+    $filtro = $this->getRequestParameter("filtro");
+    
+    if ( $this->hasFilter() ) {
+       $filtro = $this->getFilter();
+    }
+    
+    $this->form_filter = new AdmMaItemsFormFilter($filtro);
+
+    $max_paginacion = sfConfig::get("app_paginacion");
+    $pagina         = $request->getParameter('page', 1);
+    
+    $this->adm_ma_itemss = new sfDoctrinePager('AdmMaItems', $max_paginacion);
+    
+
+    if ( $this->hasFilter() ) {
+      $this->form_filter->bind($filtro);
+      $this->adm_ma_itemss->setQuery($this->form_filter->getQuery());  
+    }
+
+    $this->adm_ma_itemss->setPage( $pagina );
+    $this->adm_ma_itemss->init();
+    
+    $this->setTemplate("buscarItemFactura");
+    $this->setLayout("layout_mini");
+  }  
+
+  public function executeFiltrarItemFactura(sfWebRequest $request)
+  {
+
+    $filtro = $this->getRequestParameter("filtro");
+
+    $this->form_filter = new AdmMaItemsFormFilter($filtro);
+
+    $this->form_filter->bind($filtro);
+    
+    $max_paginacion = sfConfig::get("app_paginacion");
+    $pagina         = $request->getParameter('page', 1);
+    
+    $query = Doctrine_Core::getTable('AdmMaItems');
+    $this->adm_ma_itemss = new sfDoctrinePager('AdmMaItems', $max_paginacion);
+
+    if($this->form_filter->isValid()){
+      $this->adm_ma_itemss->setQuery($this->form_filter->getQuery());  
+      $this->setFilter( $filtro );
+    }
+
+    $this->adm_ma_itemss->setPage( $pagina );
+    $this->adm_ma_itemss->init();
+    $this->setTemplate("buscarItemFactura");
+    $this->setLayout("layout_mini");
+  }  
 }

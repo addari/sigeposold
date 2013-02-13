@@ -16,6 +16,7 @@ class AdmMaItemsFormFilter extends BaseAdmMaItemsFormFilter
 	$this->widgetSchema->setLabels(array(
 		'nombre'             => "Descripción",
 		));
-
+	
+	$this->widgetSchema->setNameFormat('filtro[%s]');
   }
 }

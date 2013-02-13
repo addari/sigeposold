@@ -11,25 +11,42 @@
 class facturacionActions extends sfActions
 {
 
+  private function setFilter($criterios){
+    $this->getUser()->setAttribute("filtro.facturacion.activo", true);  
+    $this->getUser()->setAttribute("filtro.facturacion", $criterios);
+  }
+  
+  private function getFilter(){
+    return $this->getUser()->getAttribute("filtro.facturacion");
+  }
+  
+  private function hasFilter(){
+      return $this->getUser()->getAttribute("filtro.facturacion.activo", false);  
+  }
 
+  private function clearFilter(){
+      $this->getUser()->setAttribute("filtro.facturacion.activo", false);  
+      $this->getUser()->setAttribute("filtro.facturacion", "");
+  }
+  
   public function executeFiltrar(sfWebRequest $request)
   {
 
     $filtro = $this->getRequestParameter("filtro");
-    
+
     $this->form_filter = new FacturacionFilter($filtro);
 
     $this->form_filter->bind($filtro);
     
     $max_paginacion = sfConfig::get("app_paginacion");
-    $pagina         = $request->getParameter('page', sfConfig::get("app_param_tipo_factura"));
+    $pagina         = $request->getParameter('page', 1);
     
     $query = Doctrine_Core::getTable('AdmTrDocs')->TotalDocumentos();
     $this->adm_tr_docss = new sfDoctrinePager('AdmTrDocs', $max_paginacion);
 
-
     if($this->form_filter->isValid()){
       $this->adm_tr_docss->setQuery($this->form_filter->getQuery());  
+      $this->setFilter( $filtro );
     }
 
     $this->adm_tr_docss->setPage( $pagina );
@@ -39,29 +56,50 @@ class facturacionActions extends sfActions
 
   public function executeLimpiarFiltro(sfWebRequest $request)
   {
-
-
+    $this->clearFilter();
     $this->redirect("facturacion/index");
   }
 
   public function executeIndex(sfWebRequest $request)
   {
-    $filtro = $this->getRequestParameter("filtro");
-    
-    $this->form_filter = new FacturacionFilter($filtro);
-
-
-    
+    $this->clearFilter();
+    $this->form_filter = new FacturacionFilter();
     $max_paginacion = sfConfig::get("app_paginacion");
-    $pagina         = $request->getParameter('page', sfConfig::get("app_param_tipo_factura"));
-    
-    $query = Doctrine_Core::getTable('AdmTrDocs')->TotalDocumentos();
+    $pagina         = $request->getParameter('page', 1);
     $this->adm_tr_docss = new sfDoctrinePager('AdmTrDocs', $max_paginacion);
-
-    $this->adm_tr_docss->setQuery( $query );
     $this->adm_tr_docss->setPage( $pagina );
     $this->adm_tr_docss->init();
   }
+
+  public function executeNavegacion(sfWebRequest $request)
+  {
+    $filtro = $this->getRequestParameter("filtro");
+    
+    if ( $this->hasFilter() ) {
+       $filtro = $this->getFilter();
+    }
+    
+    $this->form_filter = new FacturacionFilter($filtro);
+
+    $max_paginacion = sfConfig::get("app_paginacion");
+    $pagina         = $request->getParameter('page', 1);
+    
+    $query = Doctrine_Core::getTable('AdmTrDocs')->TotalDocumentos();
+    $this->adm_tr_docss = new sfDoctrinePager('AdmTrDocs', $max_paginacion);
+    
+
+    if ( $this->hasFilter() ) {
+      $this->form_filter->bind($filtro);
+      $this->adm_tr_docss->setQuery($this->form_filter->getQuery());  
+    }else{
+      $this->adm_tr_docss->setQuery( $query );  
+    }
+
+    $this->adm_tr_docss->setPage( $pagina );
+    $this->adm_tr_docss->init();
+
+    $this->setTemplate("index");
+  }  
 
   public function executeShow(sfWebRequest $request)
   {

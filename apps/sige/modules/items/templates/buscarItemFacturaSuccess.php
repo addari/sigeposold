@@ -17,7 +17,8 @@ agregarItem = function (item) {
     window.close();
 }
 </script>
-<form action="<?php echo url_for('items/buscarItemFactura') ?>" method="post">
+<form action="<?php echo url_for('items/filtrarItemFactura') ?>" method="post">
+<?php echo $form_filter->renderHiddenFields(); ?>
 <table class="table table-bordered sin-lineas-border">
     <thead>
     <tr>
@@ -91,22 +92,17 @@ agregarItem = function (item) {
 <!-- Inicio de paginación -->
 
 <?php if ($adm_ma_itemss->haveToPaginate()): ?>
-  <?php 
-    $criterio = $form_filter['nombre']->getValue();
-    $criterio = $criterio["text"];
-    $params = ($criterio)?"&criterio=".$criterio:"";
-  ?>
-  <div class="pagination">
+  <div class="pagination pagination-centered">
     <ul>
-      <li><a href="<?php echo url_for('items/buscarItemFactura') ?>?pagina=1<?= $params ?>">«</a></li>
+      <li><a href="<?php echo url_for('items/navegacionItemFactura') ?>?page=1">«</a></li>
       <?php foreach ($adm_ma_itemss->getLinks() as $page): ?>
         <?php if ($page == $adm_ma_itemss->getPage()): ?>
           <li class="disabled"><a href="#"><b><?php echo $page ?></b></a></li>
         <?php else: ?>
-          <li><a href="<?php echo url_for('items/buscarItemFactura') ?>?pagina=<?php echo $page ?><?= $params ?>"><?php echo $page ?></a></li>
+          <li><a href="<?php echo url_for('items/navegacionItemFactura') ?>?page=<?php echo $page ?>"><?php echo $page ?></a></li>
         <?php endif; ?>
       <?php endforeach; ?>
-      <li><a href="<?php echo url_for('items/buscarItemFactura') ?>?pagina=<?php echo $adm_ma_itemss->getLastPage() ?><?= $params ?>">»</a></li>
+      <li><a href="<?php echo url_for('items/navegacionItemFactura') ?>?page=<?php echo $adm_ma_itemss->getLastPage() ?>">»</a></li>
    </ul>
   </div>
 <?php endif; ?>

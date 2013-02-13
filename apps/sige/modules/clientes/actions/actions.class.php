@@ -10,6 +10,25 @@
  */
 class clientesActions extends sfActions
 {
+
+  private function setFilter($criterios){
+    $this->getUser()->setAttribute("filtro.clientes.activo", true);  
+    $this->getUser()->setAttribute("filtro.clientes", $criterios);
+  }
+  
+  private function getFilter(){
+    return $this->getUser()->getAttribute("filtro.clientes");
+  }
+  
+  private function hasFilter(){
+      return $this->getUser()->getAttribute("filtro.clientes.activo", false);  
+  }
+
+  private function clearFilter(){
+      $this->getUser()->setAttribute("filtro.clientes.activo", false);  
+      $this->getUser()->setAttribute("filtro.clientes", "");
+  }
+
   public function executeIndex(sfWebRequest $request)
   {
     $this->adm_ma_contacts = Doctrine_Core::getTable('AdmMaContact')
@@ -73,16 +92,68 @@ class clientesActions extends sfActions
 
   public function executeBuscarContactoFactura(sfWebRequest $request)
   {
-      $filtro = $this->getRequestParameter("filtro");
-      
-      $this->form_filter = new AdmMaContactFormFilter($filtro);
-      $this->form_filter->bind($filtro);
-      $this->adm_ma_contacts = new sfDoctrinePager('AdmMaContact', sfConfig::get("app_paginacion") );
-      // $this->adm_ma_contacts->setQuery($this->form_filter->getQuery());
-      $this->adm_ma_contacts->setPage($request->getParameter('pagina', 1));
+      $this->clearFilter();
+      $this->form_filter = new AdmMaContactFormFilter();
+      $max_paginacion = sfConfig::get("app_paginacion");
+      $pagina         = $request->getParameter('page',1);
+      $this->adm_ma_contacts = new sfDoctrinePager('AdmMaContact', $max_paginacion);
+      $this->adm_ma_contacts->setPage( $pagina );
       $this->adm_ma_contacts->init();
-
-      //refer back to the index template
       $this->setLayout("layout_mini");
   }  
+
+  public function executeNavegacionContactoFactura(sfWebRequest $request)
+  {
+    $filtro = $this->getRequestParameter("filtro");
+    
+    if ( $this->hasFilter() ) {
+       $filtro = $this->getFilter();
+    }
+    
+    $this->form_filter = new AdmMaContactFormFilter($filtro);
+
+    $max_paginacion = sfConfig::get("app_paginacion");
+    $pagina         = $request->getParameter('page', 1);
+    
+    $this->adm_ma_contacts = new sfDoctrinePager('AdmMaContact', $max_paginacion);
+    
+
+    if ( $this->hasFilter() ) {
+      $this->form_filter->bind($filtro);
+      $this->adm_ma_contacts->setQuery($this->form_filter->getQuery());  
+    }
+
+    $this->adm_ma_contacts->setPage( $pagina );
+    $this->adm_ma_contacts->init();
+    
+    $this->setTemplate("buscarContactoFactura");
+    $this->setLayout("layout_mini");
+  }  
+
+  public function executeFiltrarContactoFactura(sfWebRequest $request)
+  {
+
+    $filtro = $this->getRequestParameter("filtro");
+
+    $this->form_filter = new AdmMaContactFormFilter($filtro);
+
+    $this->form_filter->bind($filtro);
+    
+    $max_paginacion = sfConfig::get("app_paginacion");
+    $pagina         = $request->getParameter('page', 1);
+    
+    $query = Doctrine_Core::getTable('AdmMaContact');
+    $this->adm_ma_contacts = new sfDoctrinePager('AdmMaContact', $max_paginacion);
+
+    if($this->form_filter->isValid()){
+      $this->adm_ma_contacts->setQuery($this->form_filter->getQuery());  
+      $this->setFilter( $filtro );
+    }
+
+    $this->adm_ma_contacts->setPage( $pagina );
+    $this->adm_ma_contacts->init();
+    $this->setTemplate("buscarContactoFactura");
+    $this->setLayout("layout_mini");
+  }
+
 }

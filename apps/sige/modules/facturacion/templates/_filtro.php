@@ -1,7 +1,7 @@
 
 <form action="<?php echo url_for('facturacion/filtrar') ?>" method="post">
   <?php echo $form_filter->renderHiddenFields(false) ?>
-<table class="table table-bordered sin-lineas-border">
+<table class="table table-bordered sin-lineas-border filtro-modulo-general">
     <thead>
     <tr>
       <th colspan="2" class="btn-info">

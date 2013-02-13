@@ -20,8 +20,6 @@ class FacturacionFilter extends BaseAdmTrDocsFormFilter
       'contacto'       	  => new sfWidgetFormFilterInput(array("template"=>"%input%")),
       'fecha_emision'     => new sfWidgetFormFilterDate(array("template"=>"%from_date% a %to_date%",'from_date' => new sfWidgetFormFilterInput(array("template"=>"%input%"), array("data-date-format" => "dd/mm/yyyy")), 'to_date' => new sfWidgetFormFilterInput(array("template"=>"%input%"), array("data-date-format" => "dd/mm/yyyy")), 'with_empty' => false)),
       'fecha_vencimiento' => new sfWidgetFormFilterDate(array("template"=>"%from_date% a %to_date%",'from_date' => new sfWidgetFormFilterInput(array("template"=>"%input%"), array("data-date-format" => "dd/mm/yyyy")), 'to_date' => new sfWidgetFormFilterInput(array("template"=>"%input%"), array("data-date-format" => "dd/mm/yyyy")), 'with_empty' => false)),
-      // 'fecha_emision'     => new sfWidgetFormFilterInput(array("template"=>"%input%"), array("data-date-format" => "dd/mm/yyyy",'add_empty' => false)),
-      // 'fecha_vencimiento' => new sfWidgetFormFilterInput(array("template"=>"%input%"), array("data-date-format" => "dd/mm/yyyy",'add_empty' => false))
     ));
 
     $this->setValidators(array(
@@ -35,14 +33,16 @@ class FacturacionFilter extends BaseAdmTrDocsFormFilter
                                                                                   array(
                                                                                     'required' => false,
                                                                                     'date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~',
-                                                                                    'datetime_output' => "Y-m-d"
+                                                                                    'datetime_output' => 'Y-m-d 00:00:00',
+                                                                                    //"date_output"  => 'Y-m-d 00:00:00'
                                                                                     )
                                                                                 ), 
                                                   'to_date'   => new sfValidatorDateTime(
                                                                                   array(
                                                                                     'required' => false,
                                                                                     'date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~',
-                                                                                    'datetime_output' => "Y-m-d"
+                                                                                    'datetime_output' => 'Y-m-d 00:00:00',
+                                                                                    //"date_output"  => 'd-m-Y 00:00:00',
                                                                                     )
                                                                                 )
                                             )),
@@ -52,19 +52,21 @@ class FacturacionFilter extends BaseAdmTrDocsFormFilter
                                                                                   array(
                                                                                     'required' => false,
                                                                                     'date_format' => '~(?P<day>\d{3})/(?P<month>\d{2})/(?P<year>\d{4})~',
-                                                                                    'datetime_output' => "Y-m-d"
+                                                                                        'datetime_output' => 'Y-m-d 00:00:00',
+                                                                                    // "date_output"  => 'd-m-Y 00:00:00',
                                                                                     )
                                                                                 ), 
                                                   'to_date'   => new sfValidatorDateTime(
                                                                                   array(
                                                                                     'required' => false,
                                                                                     'date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~',
-                                                                                    'datetime_output' => "Y-m-d"
+                                                                                        'datetime_output' => 'Y-m-d 00:00:00',
+                                                                                    // "date_output"  => 'd-m-Y 00:00:00',
                                                                                     )
                                                                                 )
                                             ))
 	));
-
+  
 	$this->widgetSchema->setLabels(array(
     'id'                  => "Id. Documento",
 		'id_tipo'             => "Tipo de Documento",
@@ -101,12 +103,42 @@ class FacturacionFilter extends BaseAdmTrDocsFormFilter
 public function addContactoColumnQuery(Doctrine_Query $query, $field, $values) {
     $rootAlias = $query->getRootAlias();
     $criterio = $values["text"];
-    return $query
-              ->leftJoin($rootAlias.".AdmMaContact con with r.id_contacto = con.id")
-              ->where("upper(con.nombre) like upper(?)","%$criterio%");
+    if ( $criterio ){
+      return $query
+                ->leftJoin($rootAlias.".AdmMaContact con with r.id_contacto = con.id")
+                ->AndWhere("upper(con.nombre) like upper(?)","%$criterio%");
+    }
 }
 
 
+public function addFechaEmisionColumnQuery(Doctrine_Query $query, $field, $values) {
+  $rootAlias = $query->getRootAlias();
 
+  $fecha_emision = $this->getDefault("fecha_emision");
+
+  if( $fecha_emision["from"]["text"] != "" && $fecha_emision["to"]["text"] != "" ) {
+    $fecha_emision_from = Helpers::getFormatoFechaSQL( $fecha_emision["from"]["text"] );
+    $fecha_emision_to   = Helpers::getFormatoFechaSQL( $fecha_emision["to"]["text"]   );
+    
+    return $query
+              ->AndWhere($rootAlias.".fecha_emision >= ?",$fecha_emision_from)
+              ->AndWhere($rootAlias.".fecha_emision <= ?",$fecha_emision_to);
+  }
+}
+
+public function addFechaVencimientoColumnQuery(Doctrine_Query $query, $field, $values) {
+  $rootAlias = $query->getRootAlias();
+
+  $fecha_vencimiento = $this->getDefault("fecha_vencimiento");
+
+  if( $fecha_vencimiento["from"]["text"] != "" && $fecha_vencimiento["to"]["text"] != "" ) {
+    $fecha_vencimiento_from = Helpers::getFormatoFechaSQL( $fecha_vencimiento["from"]["text"] );
+    $fecha_vencimiento_to   = Helpers::getFormatoFechaSQL( $fecha_vencimiento["to"]["text"]   );
+    
+    return $query
+              ->AndWhere($rootAlias.".fecha_vencimiento >= ?",$fecha_vencimiento_from)
+              ->AndWhere($rootAlias.".fecha_vencimiento <= ?",$fecha_vencimiento_to);
+  }
+}
 
 }

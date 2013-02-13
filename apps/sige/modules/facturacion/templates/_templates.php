@@ -1,5 +1,6 @@
 <script id="template-contenedor" type="text/template">
   <div class="control-group">
+    <a class="btn" href="<?php echo url_for('facturacion/index') ?>"><span class='icon-th-list'></span>  Listar</a>
     <a href="#" class="btn add-item"><span class="icon-plus-sign"></span> Añadir Item</a>
   </div>
   <div id="contenedor-tabla"></div>
