@@ -99,7 +99,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-white"></i> Mantenimiento <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<?= url_for("tipo_contacto/index") ?>">Tipo de Documento</a></li>
+                  <li><a href="<?= url_for("tipo_contacto/index") ?>">Tipo de Contacto</a></li>
                 </ul>
               </li>              
             </ul>
