@@ -32,7 +32,7 @@ class tipo_contactoActions extends sfActions
   public function executeLimpiarFiltro(sfWebRequest $request)
   {
     $this->clearFilter();
-    $this->redirect("facturacion/index");
+    $this->redirect("tipo_contacto/index");
   }
 
   public function executeFiltrar(sfWebRequest $request)

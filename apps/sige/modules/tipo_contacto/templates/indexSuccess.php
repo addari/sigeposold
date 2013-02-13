@@ -8,6 +8,9 @@
 <div id="mensaje-notifiacion"></div>
 <table class="table table-striped table-bordered">
   <thead>
+    <tr>
+      <th class="btn-info" colspan="3"><span class='icon-list-alt'></span> Lista</th>
+    </tr>    
     <tr class="btn-inverse">
       <th>Id</th>
       <th>Nombre</th>
