@@ -12,5 +12,20 @@ class AdmMaIdentTFormFilter extends BaseAdmMaIdentTFormFilter
 {
   public function configure()
   {
+  	$this->setWidgets(array(
+  	  'id'        => new sfWidgetFormFilterInput(array("template"=>"%input%")),
+      'nombre'    => new sfWidgetFormFilterInput(array('with_empty' => false))
+    ));
+
+    $this->setValidators(array(
+      'id'                => new sfValidatorPass(array('required' => false)),
+      'nombre'    => new sfValidatorPass(array('required' => false))
+    ));
+
+    $this->widgetSchema->setNameFormat('filtro[%s]');
+
+    $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
+
+    $this->setupInheritance();
   }
 }

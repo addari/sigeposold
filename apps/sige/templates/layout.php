@@ -48,7 +48,7 @@
 
       $(document).ready(function(){
         //initialize components genericos
-        $("*").tooltip();
+        $("a").tooltip();
         //inicialize filters generales       
         $(".filtro-modulo-general").find("tbody").hide();
 
@@ -85,11 +85,23 @@
           </ul> 
         </div>
         <?php endif; ?>
-        <a class="brand" href="#">S.I.G.E</a>
+        <a class="brand" href="<?= url_for("main/index") ?>">S.I.G.E</a>
         <div class="nav-collapse collapse">
           <?php if ( !$sf_user->isAuthenticated() ): ?>
             <ul class="nav">
-              <li class="active"><?= link_to("<span class='icon-wrench'></span> Facturación","facturacion/index") ?></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-white"></i> Procesos <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<?= url_for("facturacion/index") ?>">Facturación</a></li>
+                </ul>
+              </li>              
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-white"></i> Mantenimiento <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<?= url_for("tipo_contacto/index") ?>">Tipo de Documento</a></li>
+                </ul>
+              </li>              
             </ul>
           <?php else: ?>
             <form action="<?= url_for("acceso/checkAcceso") ?>" method="post" class="navbar-form pull-right" >

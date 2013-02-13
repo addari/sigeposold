@@ -12,5 +12,6 @@ abstract class BaseFormFilterDoctrine extends sfFormFilterDoctrine
 {
   public function setup()
   {
+  	$this->widgetSchema->setNameFormat('filtro[%s]');
   }
 }
