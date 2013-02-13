@@ -23,7 +23,7 @@ class AdmMaIdentTForm extends BaseAdmMaIdentTForm
       'nombre'    => new sfValidatorString(array('max_length' => 255))
     ));
 
-    $this->widgetSchema->setNameFormat('tipo_contacto[%s]');
+    $this->widgetSchema->setNameFormat('tipo_identificacion[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 

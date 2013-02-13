@@ -16,7 +16,7 @@
   </tbody>
 </table>
 
-<a class="btn" href="<?php echo url_for('tipo_contacto/index') ?>"><span class='icon-th-list'></span>  Listar</a> <a class="btn" href="<?php echo url_for('tipo_contacto/edit?id='.$adm_ma_ident_t->getId()) ?>"><span class='icon-edit'></span> Modificar</a>
+<a class="btn" href="<?php echo url_for('tipo_identificacion/index') ?>"><span class='icon-th-list'></span>  Listar</a> <a class="btn" href="<?php echo url_for('tipo_identificacion/edit?id='.$adm_ma_ident_t->getId()) ?>"><span class='icon-edit'></span> Modificar</a>
 
 
 

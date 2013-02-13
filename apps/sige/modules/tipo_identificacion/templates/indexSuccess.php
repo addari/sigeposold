@@ -2,7 +2,7 @@
 
 <div class="btn-toolbar">
   <div class="btn-group">
-    <a class="btn" href="<?php echo url_for('tipo_contacto/new') ?>"><span class="icon-plus"></span>  Crear</a>    
+    <a class="btn" href="<?php echo url_for('tipo_identificacion/new') ?>"><span class="icon-plus"></span>  Crear</a>    
   </div>
 </div>
 <div id="mensaje-notifiacion"></div>
@@ -23,9 +23,9 @@
       <td><?php echo $adm_ma_ident_t->getId() ?></td>
       <td><?php echo $adm_ma_ident_t->getNombre() ?></td>
       <td class="acciones">
-        <a class="btn" href="<?php echo url_for('tipo_contacto/show?id='.$adm_ma_ident_t->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
-        <a class="btn" href="<?php echo url_for('tipo_contacto/edit?id='.$adm_ma_ident_t->getId()) ?>" title="Modificar"><span class='icon-pencil'></span></a>
-        <?php echo link_to('<span class="icon-trash"></span>', 'tipo_contacto/delete?id='.$adm_ma_ident_t->getId(), array('method' => 'delete', 'confirm' => '¿Realmente desea eliminar éste registro?' , 'class' => 'btn', "title"=>"Eliminar")) ?>
+        <a class="btn" href="<?php echo url_for('tipo_identificacion/show?id='.$adm_ma_ident_t->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
+        <a class="btn" href="<?php echo url_for('tipo_identificacion/edit?id='.$adm_ma_ident_t->getId()) ?>" title="Modificar"><span class='icon-pencil'></span></a>
+        <?php echo link_to('<span class="icon-trash"></span>', 'tipo_identificacion/delete?id='.$adm_ma_ident_t->getId(), array('method' => 'delete', 'confirm' => '¿Realmente desea eliminar éste registro?' , 'class' => 'btn', "title"=>"Eliminar")) ?>
       </td>
     </tr>
     <?php endforeach; ?>

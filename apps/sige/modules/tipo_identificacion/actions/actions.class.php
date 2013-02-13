@@ -1,38 +1,38 @@
 <?php
 
 /**
- * tipo_contacto actions.
+ * tipo_identificacion actions.
  *
  * @package    sige
- * @subpackage tipo_contacto
+ * @subpackage tipo_identificacion
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class tipo_contactoActions extends sfActions
+class tipo_identificacionActions extends sfActions
 {
 
   private function setFilter($criterios){
-    $this->getUser()->setAttribute("filtro.tipo_contacto.activo", true);  
-    $this->getUser()->setAttribute("filtro.tipo_contacto", $criterios);
+    $this->getUser()->setAttribute("filtro.tipo_identificacion.activo", true);  
+    $this->getUser()->setAttribute("filtro.tipo_identificacion", $criterios);
   }
   
   private function getFilter(){
-    return $this->getUser()->getAttribute("filtro.tipo_contacto");
+    return $this->getUser()->getAttribute("filtro.tipo_identificacion");
   }
   
   private function hasFilter(){
-      return $this->getUser()->getAttribute("filtro.tipo_contacto.activo", false);  
+      return $this->getUser()->getAttribute("filtro.tipo_identificacion.activo", false);  
   }
 
   private function clearFilter(){
-      $this->getUser()->setAttribute("filtro.tipo_contacto.activo", false);  
-      $this->getUser()->setAttribute("filtro.tipo_contacto", "");
+      $this->getUser()->setAttribute("filtro.tipo_identificacion.activo", false);  
+      $this->getUser()->setAttribute("filtro.tipo_identificacion", "");
   }
 
   public function executeLimpiarFiltro(sfWebRequest $request)
   {
     $this->clearFilter();
-    $this->redirect("tipo_contacto/index");
+    $this->redirect("tipo_identificacion/index");
   }
 
   public function executeFiltrar(sfWebRequest $request)
@@ -118,7 +118,7 @@ class tipo_contactoActions extends sfActions
     $this->forward404Unless($adm_ma_ident_t = Doctrine_Core::getTable('AdmMaIdentT')->find(array($request->getParameter('id'))), sprintf('Object adm_ma_ident_t does not exist (%s).', $request->getParameter('id')));
     $adm_ma_ident_t->delete();
 
-    $this->redirect('tipo_contacto/index');
+    $this->redirect('tipo_identificacion/index');
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -128,7 +128,7 @@ class tipo_contactoActions extends sfActions
     {
       $adm_ma_ident_t = $form->save();
 
-      $this->redirect('tipo_contacto/edit?id='.$adm_ma_ident_t->getId());
+      $this->redirect('tipo_identificacion/edit?id='.$adm_ma_ident_t->getId());
     }
   }
 }
