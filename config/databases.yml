@@ -15,3 +15,11 @@ dev:
       dsn:      mysql:host=localhost;dbname=sigepos
       username: sigepos
       password: sigepos
+
+hosting:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn:      mysql:host=184.168.194.154;dbname=sigepos
+      username: sigepos
+      password: Compaq@12
