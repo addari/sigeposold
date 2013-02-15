@@ -4,7 +4,7 @@
 <div class="portlet-content">
     <ul class="nav nav-pills">
       <li><a href="<?php echo url_for('tipo_identificacion/new') ?>"><i class="icon-plus"></i> Crear</a></li>
-      <li class="active"><a href="/desarrollo/sigeconta/index.php?r=contaMaIdentT/index"><i class="icon-th-list"></i> Listar</a></li>
+      <li class="active"><a href="#"><i class="icon-th-list"></i> Listar</a></li>
       <li><a class="search-button btn-buscar" href="#"><i class="icon-search"></i> Buscar</a></li>
     </li>
   </ul>

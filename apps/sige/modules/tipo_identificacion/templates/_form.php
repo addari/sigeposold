@@ -24,7 +24,6 @@
   </table>
   <?php echo $form->renderHiddenFields(false) ?>
   <div class="form-actions">
-    <a class="btn" href="<?php echo url_for('tipo_identificacion/index') ?>"><span class='icon-th-list'></span>  Listar</a>
     <?php if (!$form->getObject()->isNew()): ?>
       <button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i> Guardar</button>
     <?php else: ?>
