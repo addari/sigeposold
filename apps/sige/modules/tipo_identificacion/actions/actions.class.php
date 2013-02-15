@@ -156,7 +156,7 @@ class tipo_identificacionActions extends sfActions
     {
       $adm_ma_ident_t = $form->save();
 
-      $this->redirect('tipo_identificacion/edit?id='.$adm_ma_ident_t->getId());
+      $this->redirect('tipo_identificacion/show?id='.$adm_ma_ident_t->getId());
     }
   }
 }
