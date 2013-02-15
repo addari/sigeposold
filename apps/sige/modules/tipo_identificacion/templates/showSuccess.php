@@ -6,6 +6,7 @@
         <li><a href="<?php echo url_for('tipo_identificacion/new') ?>"><i class="icon-plus"></i> Crear</a></li>
         <li><a href="<?php echo url_for('tipo_identificacion/index') ?>"><i class="icon-th-list"></i> Listar</a></li>
         <li><a href="<?php echo url_for('tipo_identificacion/edit?id='.$adm_ma_ident_t->getId()) ?>"><i class="icon-edit"></i> Modificar</a></li>
+        <li class="active"><a href="#"><i class="icon-eye-open"></i> Ver</a></li>
       </li>
     </ul>
   </div>
