@@ -23,12 +23,13 @@
     </tbody>
   </table>
   <?php echo $form->renderHiddenFields(false) ?>
-
-  <a class="btn" href="<?php echo url_for('tipo_identificacion/index') ?>"><span class='icon-th-list'></span>  Listar</a>  
-  <?php if (!$form->getObject()->isNew()): ?>
-    <button class="btn btn-primary" type="submit"><i class="icon-ok icon-white"></i> Guardar</button>
-  <?php else: ?>
-    <button class="btn btn-primary" type="submit"><i class="icon-ok icon-white"></i> Crear</button>
-  <?php endif; ?>
-  <button class="btn" type="reset" name="yt1"><i class="icon-remove"></i> Limpiar</button>
+  <div class="form-actions">
+    <a class="btn" href="<?php echo url_for('tipo_identificacion/index') ?>"><span class='icon-th-list'></span>  Listar</a>
+    <?php if (!$form->getObject()->isNew()): ?>
+      <button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i> Guardar</button>
+    <?php else: ?>
+      <button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i> Crear</button>
+    <?php endif; ?>  
+    <button class="btn" type="reset"><i class="icon-remove"></i> Limpiar</button>
+  </div>
 </form>

@@ -60,6 +60,34 @@ class tipo_identificacionActions extends sfActions
     $this->setTemplate("index");
   }
 
+  public function executeNavegacion(sfWebRequest $request)
+  {
+    $filtro = $this->getRequestParameter("filtro");
+    
+    if ( $this->hasFilter() ) {
+       $filtro = $this->getFilter();
+    }
+    
+    $this->form_filter = new AdmMaIdentTFormFilter($filtro);
+
+    $max_paginacion = sfConfig::get("app_paginacion");
+    $pagina         = $request->getParameter('page', 1);
+    
+    $this->adm_ma_ident_ts = new sfDoctrinePager('AdmMaIdentT', $max_paginacion);
+
+    if ( $this->hasFilter() ) {
+      $this->form_filter->bind($filtro);
+      $this->adm_ma_ident_ts->setQuery($this->form_filter->getQuery());  
+    }
+
+    $this->adm_ma_ident_ts->setPage( $pagina );
+    $this->adm_ma_ident_ts->init();
+
+    $this->setTemplate("index");
+
+
+  }    
+
   public function executeIndex(sfWebRequest $request)
   {
     $this->clearFilter();

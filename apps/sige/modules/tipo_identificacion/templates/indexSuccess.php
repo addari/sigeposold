@@ -1,10 +1,19 @@
-<?php include_partial( 'filtro', array( "form_filter" => $form_filter ) ) ?>
-
-<div class="btn-toolbar">
-  <div class="btn-group">
-    <a class="btn" href="<?php echo url_for('tipo_identificacion/new') ?>"><span class="icon-plus"></span>  Crear</a>    
+<h3>Tipo de Identificación</h3>
+<hr>
+<div class="content-controles">
+<div class="portlet-content">
+    <ul class="nav nav-pills">
+      <li><a href="<?php echo url_for('tipo_identificacion/new') ?>"><i class="icon-plus"></i> Crear</a></li>
+      <li class="active"><a href="/desarrollo/sigeconta/index.php?r=contaMaIdentT/index"><i class="icon-th-list"></i> Listar</a></li>
+      <li><a class="search-button btn-buscar" href="#"><i class="icon-search"></i> Buscar</a></li>
+    </li>
+  </ul>
+</div>
+  <div class="filtro-modulo-general" <?= ($sf_user->getAttribute("filtro.tipo_identificacion.activo"))?'style="display:block !important;"':"" ?>>
+    <?php include_partial( 'filtro', array( "form_filter" => $form_filter ) ) ?>
   </div>
 </div>
+
 <div id="mensaje-notifiacion"></div>
 <table class="table table-striped table-bordered">
   <thead>
@@ -40,3 +49,19 @@
     </tr>
   </tfool>  
 </table>
+
+<?php if ($adm_ma_ident_ts->haveToPaginate()): ?>
+  <div class="pagination pagination-centered">
+    <ul>
+      <li><a href="<?php echo url_for('tipo_identificacion/navegacion') ?>?page=1">«</a></li>
+      <?php foreach ($adm_ma_ident_ts->getLinks() as $page): ?>
+        <?php if ($page == $adm_ma_ident_ts->getPage()): ?>
+          <li class="disabled"><a href="#"><b><?php echo $page ?></b></a></li>
+        <?php else: ?>
+          <li><a href="<?php echo url_for('tipo_identificacion/navegacion') ?>?page=<?php echo $page ?>"><?php echo $page ?></a></li>
+        <?php endif; ?>
+      <?php endforeach; ?>
+      <li><a href="<?php echo url_for('tipo_identificacion/navegacion') ?>?page=<?php echo $adm_ma_ident_ts->getLastPage() ?>">»</a></li>
+   </ul>
+  </div>
+<?php endif; ?>

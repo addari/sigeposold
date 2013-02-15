@@ -49,14 +49,14 @@
       $(document).ready(function(){
         //initialize components genericos
         $("a").tooltip();
-        //inicialize filters generales       
-        $(".filtro-modulo-general").find("tbody").hide();
+        //inicialize filters generales
+        $("div.filtro-modulo-general").hide();
 
-        $(".filtro-modulo-general").find("thead").click(function(e){
-          if( $(this).parent().find("tbody").is(":visible") ){
-            $(this).parent().find("tbody").hide();
+        $("a.btn-buscar").click(function(e){
+          if( $("a.btn-buscar").parents("div.content-controles").find("div.filtro-modulo-general").is(":visible") ){
+            $("a.btn-buscar").parents("div.content-controles").find("div.filtro-modulo-general").hide();
           }else{
-            $(this).parent().find("tbody").show("delay");
+            $("a.btn-buscar").parents("div.content-controles").find("div.filtro-modulo-general").show();
           }
         });
 
