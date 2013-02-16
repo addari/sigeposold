@@ -21,6 +21,7 @@ class <?php echo $this->table->getOption('name') ?>FormFilter extends Base<?php 
 <?php else: ?>
   public function configure()
   {
+    $this->widgetSchema->setNameFormat('filtro[%s]');
   }
 <?php endif; ?>
 }

@@ -10,29 +10,12 @@
 <input type="hidden" name="sf_method" value="put" />
 [?php endif; ?]
 <?php endif;?>
-  <table class="table table-striped">
-    <tfoot>
+  <table class="table table-bordered formulario-documento sin-lineas-border">
+    <thead>
       <tr>
-        <td colspan="2">
-<?php if (!isset($this->params['non_verbose_templates']) || !$this->params['non_verbose_templates']): ?>
-          [?php echo $form->renderHiddenFields(false) ?]
-<?php endif; ?>
-<?php if (isset($this->params['route_prefix']) && $this->params['route_prefix']): ?>
-          &nbsp;<a class="btn" href="[?php echo url_for('<?php echo $this->getUrlForAction('list') ?>') ?]"><span class="icon-chevron-left"></span> Volver</a>
-<?php else: ?>
-          &nbsp;<a class="btn" href="[?php echo url_for('<?php echo $this->getModuleName() ?>/index') ?]"><span class="icon-chevron-left"></span> Volver</a>
-<?php endif; ?>
-          [?php if (!$form->getObject()->isNew()): ?]
-<?php if (isset($this->params['route_prefix']) && $this->params['route_prefix']): ?>
-            &nbsp;[?php echo link_to('<span class="icon-remove"></span> Eliminar', '<?php echo $this->getUrlForAction('delete') ?>', $form->getObject(), array('method' => 'delete', 'confirm' => '¿Realmente desea eliminar éste registro?', 'class' => 'btn' )) ?]
-<?php else: ?>
-            &nbsp;[?php echo link_to('<span class="icon-remove"></span> Eliminar', '<?php echo $this->getModuleName() ?>/delete?<?php echo $this->getPrimaryKeyUrlParams('$form->getObject()', true) ?>, array('method' => 'delete', 'confirm' => '¿Realmente desea eliminar éste registro?' , 'class' => 'btn')) ?]
-<?php endif; ?>
-          [?php endif; ?]
-          <input class="btn btn-primary" type="submit" value="Guardar" />
-        </td>
-      </tr>
-    </tfoot>
+        <th class="btn-info" colspan="2"><span class='icon-list-alt'></span> [?= $accion_formulario ?]</th>
+      </tr>    
+    </thead>    
     <tbody>
 <?php if (isset($this->params['non_verbose_templates']) && $this->params['non_verbose_templates']): ?>
       [?php echo $form ?]
@@ -40,14 +23,25 @@
       [?php echo $form->renderGlobalErrors() ?]
 <?php foreach ($form as $name => $field): if ($field->isHidden()) continue ?>
       <tr>
-        <th>[?php echo $form['<?php echo $name ?>']->renderLabel() ?]</th>
+        <th class="linea-left">[?php echo $form['<?php echo $name ?>']->renderLabel() ?]</th>
         <td>
-          [?php echo $form['<?php echo $name ?>']->renderError() ?]
           [?php echo $form['<?php echo $name ?>'] ?]
+          [?php echo $form['<?php echo $name ?>']->renderError() ?]
         </td>
       </tr>
 <?php endforeach; ?>
 <?php endif; ?>
     </tbody>
   </table>
+  <?php if (!isset($this->params['non_verbose_templates']) || !$this->params['non_verbose_templates']): ?>
+          [?php echo $form->renderHiddenFields(false) ?]
+  <?php endif; ?>
+  <div class="form-actions">
+    [?php if (!$form->getObject()->isNew()): ?]
+      <button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i> Guardar</button>
+    [?php else: ?]
+      <button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i> Crear</button>
+    [?php endif; ?]
+    <button class="btn" type="reset"><i class="icon-remove"></i> Limpiar</button>
+  </div>
 </form>
