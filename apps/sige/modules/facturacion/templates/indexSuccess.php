@@ -9,10 +9,11 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th class="btn-info" colspan="8"><span class='icon-list-alt'></span> Lista</th>
+      <th class="btn-info" colspan="9"><span class='icon-list-alt'></span> Lista</th>
     </tr>
     <tr class="btn-inverse">
       <th>Id</th>
+      <th>Tipo Documento</th>
       <th>Nro. Documento</th>
       <th>Contacto</th>
       <th>Fecha de Emisión</th>
@@ -25,6 +26,7 @@
     <?php foreach ($adm_tr_docss as $adm_tr_docs): ?>
     <tr>
       <td><?php echo $adm_tr_docs->getId() ?></td>
+      <td><?php echo $adm_tr_docs->AdmMaDocsT->getNombre() ?></td>
       <td><?php echo $adm_tr_docs->getNumeroDocumento() ?></td>
       <td><?php echo $adm_tr_docs->AdmMaContact->getNombre() ?></td>
       <td><?php echo $adm_tr_docs->getDateTimeObject("fecha_emision")->format("d/m/Y") ?></td>
@@ -48,7 +50,7 @@
   </tbody>
   <tfool>
     <tr>
-      <td colspan="5" class="total-columna-label">
+      <td colspan="6" class="total-columna-label">
         Total
       </td>
       <td class="total-columna-number">
