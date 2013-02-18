@@ -58,7 +58,7 @@
         <?php foreach($adm_tr_docss->getResults() as $documento): ?>
             <?php $sumTotal += $documento->monto_exento + $documento->monto_gravado + $documento->monto_impuesto; ?>
         <?php endforeach; ?>
-            <?= Helpers::FormatearMonto( $sumTotal ) ?>
+            <strong><?= Helpers::FormatearMonto( $sumTotal ) ?></strong>
       </td>
       <td></td>
     </tr>
