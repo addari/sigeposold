@@ -14,7 +14,7 @@
     <tr class="btn-inverse">
       <th>Id</th>
       <th>Tipo Documento</th>
-      <th>Nro. Documento</th>
+      <th>Número</th>
       <th>Contacto</th>
       <th>Fecha de Emisión</th>
       <th>Fecha de Vencimiento</th>
