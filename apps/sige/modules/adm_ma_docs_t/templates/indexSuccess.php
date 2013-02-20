@@ -1,4 +1,4 @@
-<h3>Tipo de Documento</h3>
+<h3>Tipo de Documentos</h3>
 <hr>
 <div class="content-controles">
 <div class="portlet-content">
@@ -20,7 +20,7 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th class="btn-info" colspan="15"><span class='icon-list-alt'></span> Lista</th>
+      <th class="btn-info" colspan=14><span class='icon-list-alt'></span> Lista</th>
     </tr>    
     <tr class="btn-inverse">
       <th>Id</th>
@@ -36,42 +36,27 @@
       <th>Signo inventario</th>
       <th>Id cuenta</th>
       <th>Activo</th>
-      <th>Timestamp</th>
-      <th>Acciones</th>
+      <th class="acciones-header">Acciones</th>
     </tr>
   </thead>
   <tbody>
     <?php foreach ($adm_ma_docs_ts as $adm_ma_docs_t): ?>
     <tr>
-            <td><?php echo $adm_ma_docs_t->getId() ?></td>
+      <td><?php echo $adm_ma_docs_t->getId() ?></td>
       <td><?php echo $adm_ma_docs_t->getNombre() ?></td>
-            
       <td><?php echo $adm_ma_docs_t->getModulo() ?></td>
-            
       <td><?php echo $adm_ma_docs_t->getOrigen() ?></td>
-            
       <td><?php echo $adm_ma_docs_t->getTipoFiscal() ?></td>
-            
       <td><?php echo $adm_ma_docs_t->getAfectaCuentas() ?></td>
-            
       <td><?php echo $adm_ma_docs_t->getSignoCuentas() ?></td>
-            
       <td><?php echo $adm_ma_docs_t->getContieneRenglones() ?></td>
-            
       <td><?php echo $adm_ma_docs_t->getAfectaInventario() ?></td>
-            
       <td><?php echo $adm_ma_docs_t->getReservaInventario() ?></td>
-            
       <td><?php echo $adm_ma_docs_t->getSignoInventario() ?></td>
-            
       <td><?php echo $adm_ma_docs_t->getIdCuenta() ?></td>
-            
       <td><?php echo $adm_ma_docs_t->getActivo() ?></td>
-            
-      <td><?php echo $adm_ma_docs_t->getTimestamp() ?></td>
-            <td class="acciones">
-                <a class="btn" href="<?php echo url_for('adm_ma_docs_t/show?id='.$adm_ma_docs_t->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
-                
+      <td class="acciones">
+        <a class="btn" href="<?php echo url_for('adm_ma_docs_t/show?id='.$adm_ma_docs_t->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
         <a class="btn" href="<?php echo url_for('adm_ma_docs_t/edit?id='.$adm_ma_docs_t->getId()) ?>" title="Modificar"><span class='icon-pencil'></span></a>
         <?php echo link_to('<span class="icon-trash"></span>', 'adm_ma_docs_t/delete?id='.$adm_ma_docs_t->getId(), array('method' => 'delete', 'confirm' => '¿Realmente desea eliminar éste registro?' , 'class' => 'btn', "title"=>"Eliminar")) ?>
       </td>

@@ -76,7 +76,7 @@ class FacturacionFilter extends BaseAdmTrDocsFormFilter
 		'contacto'            => "Cliente"
 		));
 
-    
+    $this->widgetSchema->setNameFormat('filtro[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 

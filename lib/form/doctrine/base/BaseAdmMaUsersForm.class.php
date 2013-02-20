@@ -24,12 +24,12 @@ abstract class BaseAdmMaUsersForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'username'    => new sfValidatorString(array('max_length' => 255)),
-      'password'    => new sfValidatorString(array('max_length' => 255)),
-      'id_contacto' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaContact'))),
-      'activo'      => new sfValidatorInteger(array('required' => false)),
-      'timestamp'   => new sfValidatorDateTime(),
+      'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'username'    => new sfValidatorString(array('max_length' => 255)),  
+      'password'    => new sfValidatorString(array('max_length' => 255)),  
+      'id_contacto' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaContact'))),  
+      'activo'      => new sfValidatorInteger(array('required' => false)),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_ma_users[%s]');

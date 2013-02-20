@@ -13,95 +13,88 @@
     </thead>    
     <tbody>
       <?php echo $form->renderGlobalErrors() ?>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['nombre']->renderLabel() ?></th>
         <td>
           <?php echo $form['nombre'] ?>
           <?php echo $form['nombre']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['modulo']->renderLabel() ?></th>
         <td>
           <?php echo $form['modulo'] ?>
           <?php echo $form['modulo']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['origen']->renderLabel() ?></th>
         <td>
           <?php echo $form['origen'] ?>
           <?php echo $form['origen']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['tipo_fiscal']->renderLabel() ?></th>
         <td>
           <?php echo $form['tipo_fiscal'] ?>
           <?php echo $form['tipo_fiscal']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['afecta_cuentas']->renderLabel() ?></th>
         <td>
           <?php echo $form['afecta_cuentas'] ?>
           <?php echo $form['afecta_cuentas']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['signo_cuentas']->renderLabel() ?></th>
         <td>
           <?php echo $form['signo_cuentas'] ?>
           <?php echo $form['signo_cuentas']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['contiene_renglones']->renderLabel() ?></th>
         <td>
           <?php echo $form['contiene_renglones'] ?>
           <?php echo $form['contiene_renglones']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['afecta_inventario']->renderLabel() ?></th>
         <td>
           <?php echo $form['afecta_inventario'] ?>
           <?php echo $form['afecta_inventario']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['reserva_inventario']->renderLabel() ?></th>
         <td>
           <?php echo $form['reserva_inventario'] ?>
           <?php echo $form['reserva_inventario']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['signo_inventario']->renderLabel() ?></th>
         <td>
           <?php echo $form['signo_inventario'] ?>
           <?php echo $form['signo_inventario']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['id_cuenta']->renderLabel() ?></th>
         <td>
           <?php echo $form['id_cuenta'] ?>
           <?php echo $form['id_cuenta']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['activo']->renderLabel() ?></th>
         <td>
           <?php echo $form['activo'] ?>
           <?php echo $form['activo']->renderError() ?>
-        </td>
-      </tr>
-      <tr>
-        <th class="linea-left"><?php echo $form['timestamp']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['timestamp'] ?>
-          <?php echo $form['timestamp']->renderError() ?>
         </td>
       </tr>
     </tbody>

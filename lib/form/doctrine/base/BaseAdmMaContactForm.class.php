@@ -29,17 +29,17 @@ abstract class BaseAdmMaContactForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'                     => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'nombre'                 => new sfValidatorString(array('max_length' => 255)),
-      'tipo_contacto'          => new sfValidatorInteger(array('required' => false)),
-      'id_tipo_identificacion' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaIdentT'), 'required' => false)),
-      'numero_identificacion'  => new sfValidatorString(array('max_length' => 128, 'required' => false)),
-      'direccion'              => new sfValidatorString(array('required' => false)),
-      'telefonos'              => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'email'                  => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'exonerado'              => new sfValidatorInteger(array('required' => false)),
-      'jubilado'               => new sfValidatorInteger(array('required' => false)),
-      'timestamp'              => new sfValidatorDateTime(),
+      'id'                     => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'nombre'                 => new sfValidatorString(array('max_length' => 255)),  
+      'tipo_contacto'          => new sfValidatorInteger(array('required' => false)),  
+      'id_tipo_identificacion' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaIdentT'), 'required' => false)),  
+      'numero_identificacion'  => new sfValidatorString(array('max_length' => 128, 'required' => false)),  
+      'direccion'              => new sfValidatorString(array('required' => false)),  
+      'telefonos'              => new sfValidatorString(array('max_length' => 255, 'required' => false)),  
+      'email'                  => new sfValidatorString(array('max_length' => 255, 'required' => false)),  
+      'exonerado'              => new sfValidatorInteger(array('required' => false)),  
+      'jubilado'               => new sfValidatorInteger(array('required' => false)),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_ma_contact[%s]');

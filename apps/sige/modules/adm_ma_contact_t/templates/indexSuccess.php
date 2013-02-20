@@ -26,22 +26,17 @@
       <th>Id</th>
       <th>Nombre</th>
       <th>Modulo</th>
-      <th>Timestamp</th>
       <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
     <?php foreach ($adm_ma_contact_ts as $adm_ma_contact_t): ?>
     <tr>
-            <td><?php echo $adm_ma_contact_t->getId() ?></td>
+      <td><?php echo $adm_ma_contact_t->getId() ?></td>
       <td><?php echo $adm_ma_contact_t->getNombre() ?></td>
-            
       <td><?php echo $adm_ma_contact_t->getModulo() ?></td>
-            
-      <td><?php echo $adm_ma_contact_t->getTimestamp() ?></td>
-            <td class="acciones">
-                <a class="btn" href="<?php echo url_for('adm_ma_contact_t/show?id='.$adm_ma_contact_t->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
-                
+      <td class="acciones">
+        <a class="btn" href="<?php echo url_for('adm_ma_contact_t/show?id='.$adm_ma_contact_t->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
         <a class="btn" href="<?php echo url_for('adm_ma_contact_t/edit?id='.$adm_ma_contact_t->getId()) ?>" title="Modificar"><span class='icon-pencil'></span></a>
         <?php echo link_to('<span class="icon-trash"></span>', 'adm_ma_contact_t/delete?id='.$adm_ma_contact_t->getId(), array('method' => 'delete', 'confirm' => '¿Realmente desea eliminar éste registro?' , 'class' => 'btn', "title"=>"Eliminar")) ?>
       </td>

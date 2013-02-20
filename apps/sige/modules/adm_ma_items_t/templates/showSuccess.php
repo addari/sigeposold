@@ -1,4 +1,4 @@
-<h3>Tipo de Productos</h3>
+<h3>Tipo de Producto</h3>
 <hr>
 <div class="content-controles">
   <div class="portlet-content">
@@ -16,7 +16,7 @@
 <table class="lista-show table table-striped table-bordered">
   <thead>
     <tr>
-      <th class="btn-info" colspan="4"><span class='icon-eye-open'></span> Vista Previa de Tipo de Productos</th>
+      <th class="btn-info" colspan="4"><span class='icon-eye-open'></span> Vista Previa de Tipo de Producto</th>
     </tr>
   </thead>	
   <tbody>
@@ -27,10 +27,6 @@
     <tr>
       <th class="columna-show">Nombre:</th>
       <td><?php echo $adm_ma_items_t->getNombre() ?></td>
-    </tr>
-    <tr>
-      <th class="columna-show">Timestamp:</th>
-      <td><?php echo $adm_ma_items_t->getTimestamp() ?></td>
     </tr>
   </tbody>
 </table>

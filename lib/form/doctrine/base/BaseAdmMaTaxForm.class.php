@@ -23,11 +23,11 @@ abstract class BaseAdmMaTaxForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'nombre'     => new sfValidatorString(array('max_length' => 128)),
-      'alias'      => new sfValidatorString(array('max_length' => 64)),
-      'porcentaje' => new sfValidatorNumber(array('required' => false)),
-      'timestamp'  => new sfValidatorDateTime(),
+      'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'nombre'     => new sfValidatorString(array('max_length' => 128)),  
+      'alias'      => new sfValidatorString(array('max_length' => 64)),  
+      'porcentaje' => new sfValidatorNumber(array('required' => false)),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_ma_tax[%s]');

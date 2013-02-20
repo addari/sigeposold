@@ -21,6 +21,17 @@ class <?php echo $this->table->getOption('name') ?>FormFilter extends Base<?php 
 <?php else: ?>
   public function configure()
   {
+
+    $this->setWidgets(array(
+    <?php foreach ($this->getColumns() as $column): ?>
+    <?php if (($column->isPrimaryKey()) || $column->getFieldName() == "timestamp") continue ?>
+          '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new <?php echo $this->getWidgetClassForColumn($column) ?>(<?php echo $this->getWidgetOptionsForColumn($column) ?>),
+    <?php endforeach; ?>
+    <?php foreach ($this->getManyToManyRelations() as $relation): ?>
+          '<?php echo $this->underscore($relation['alias']) ?>_list'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($this->underscore($relation['alias']).'_list')) ?> => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => '<?php echo $relation['table']->getOption('name') ?>')),
+    <?php endforeach; ?>
+    ));
+
     $this->widgetSchema->setNameFormat('filtro[%s]');
   }
 <?php endif; ?>

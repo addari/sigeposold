@@ -1,4 +1,4 @@
-<h3>Tipo de Productos</h3>
+<h3>Tipo de Producto</h3>
 <hr>
 <div class="content-controles">
 <div class="portlet-content">
@@ -25,7 +25,6 @@
     <tr class="btn-inverse">
       <th>Id</th>
       <th>Nombre</th>
-      <th>Timestamp</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -35,7 +34,6 @@
             <td><?php echo $adm_ma_items_t->getId() ?></td>
       <td><?php echo $adm_ma_items_t->getNombre() ?></td>
             
-      <td><?php echo $adm_ma_items_t->getTimestamp() ?></td>
             <td class="acciones">
                 <a class="btn" href="<?php echo url_for('adm_ma_items_t/show?id='.$adm_ma_items_t->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
                 

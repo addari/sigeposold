@@ -1,3 +1,17 @@
+<h3>Tipo de Identificación</h3>
+<hr>
+<div class="content-controles">
+  <div class="portlet-content">
+      <ul class="nav nav-pills">
+        <li><a href="<?php echo url_for('facturacion/new') ?>"><i class="icon-plus"></i> Crear</a></li>
+        <li><a href="<?php echo url_for('facturacion/index') ?>"><i class="icon-th-list"></i> Listar</a></li>
+        <li><a href="<?php echo url_for('facturacion/edit?id='.$adm_tr_docs->getId()) ?>"><i class="icon-edit"></i> Modificar</a></li>
+        <li class="active"><a href="#"><i class="icon-eye-open"></i> Ver</a></li>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <table class="lista-show table table-striped table-bordered">
   <thead>
     <tr>
@@ -33,8 +47,6 @@
     </tr>
   </tbody>
 </table>
-
-<a class="btn" href="<?php echo url_for('facturacion/index') ?>"><span class='icon-th-list'></span>  Listar</a> <a class="btn" href="<?php echo url_for('facturacion/edit?id='.$adm_tr_docs->getId()) ?>"><span class='icon-edit'></span> Modificar</a>
 
 <div class="clearfix separador"></div>
 

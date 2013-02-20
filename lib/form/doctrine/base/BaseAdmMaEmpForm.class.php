@@ -24,12 +24,12 @@ abstract class BaseAdmMaEmpForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'                     => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'nombre'                 => new sfValidatorString(array('max_length' => 255)),
-      'id_tipo_identificacion' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaIdentT'), 'required' => false)),
-      'numero_identificacion'  => new sfValidatorString(array('max_length' => 128, 'required' => false)),
-      'id_principal'           => new sfValidatorInteger(array('required' => false)),
-      'timestamp'              => new sfValidatorDateTime(),
+      'id'                     => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'nombre'                 => new sfValidatorString(array('max_length' => 255)),  
+      'id_tipo_identificacion' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaIdentT'), 'required' => false)),  
+      'numero_identificacion'  => new sfValidatorString(array('max_length' => 128, 'required' => false)),  
+      'id_principal'           => new sfValidatorInteger(array('required' => false)),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_ma_emp[%s]');

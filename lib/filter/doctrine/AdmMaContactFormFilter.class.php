@@ -13,11 +13,10 @@ class AdmMaContactFormFilter extends BaseAdmMaContactFormFilter
   public function configure()
   {
 
-
     $this->setWidgets(array(
       'nombre'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'modulo'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'timestamp' => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'timestamp' => new sfWidgetFormFilterInputHidden(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
     ));
 
     $this->setValidators(array(

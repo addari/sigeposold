@@ -29,7 +29,7 @@
     </tr>
   </thead>	
   <tbody>
-<?php foreach ($this->getColumns() as $column): ?>
+<?php foreach ($this->getColumns() as $column): if($column->getPhpName()=="timestamp") continue ?>
     <tr>
       <th class="columna-show"><?php echo sfInflector::humanize(sfInflector::underscore($column->getPhpName())) ?>:</th>
       <td>[?php echo $<?php echo $this->getSingularName() ?>->get<?php echo sfInflector::camelize($column->getPhpName()) ?>() ?]</td>

@@ -83,13 +83,6 @@
     <?php echo $form_filter['activo']->renderError() ?>
     </div>
   </div>
-    <div class="control-group">
-    <?php echo $form_filter['timestamp']->renderLabel(array(),array("class"=>"control-label")) ?>
-    <div class="controls">
-    <?php echo $form_filter['timestamp'] ?>
-    <?php echo $form_filter['timestamp']->renderError() ?>
-    </div>
-  </div>
     
   <?php echo $form_filter->renderHiddenFields(false) ?>
   <div class="form-actions">

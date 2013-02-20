@@ -1,4 +1,4 @@
-<h3>Tipo de Productos</h3>
+<h3>Tipo de Producto</h3>
 <hr>
 <div class="content-controles">
   <div class="portlet-content">
@@ -15,5 +15,5 @@
 </div>
 
 <div class="vista-factura">
-<?php include_partial('form', array("form" => $form, "accion_formulario" => "Editar Tipo de Productos")) ?>
+<?php include_partial('form', array("form" => $form, "accion_formulario" => "Editar Tipo de Producto")) ?>
 </div>

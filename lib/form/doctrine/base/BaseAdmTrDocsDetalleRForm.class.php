@@ -28,16 +28,16 @@ abstract class BaseAdmTrDocsDetalleRForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'             => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'id_documento'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmTrDocs'))),
-      'id_items'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaItems'))),
-      'descripcion'    => new sfValidatorString(array('max_length' => 256)),
-      'cantidad'       => new sfValidatorNumber(array('required' => false)),
-      'costo'          => new sfValidatorNumber(array('required' => false)),
-      'precio'         => new sfValidatorNumber(array('required' => false)),
-      'monto_impuesto' => new sfValidatorNumber(array('required' => false)),
-      'alias_impuesto' => new sfValidatorString(array('max_length' => 128, 'required' => false)),
-      'timestamp'      => new sfValidatorDateTime(),
+      'id'             => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'id_documento'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmTrDocs'))),  
+      'id_items'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaItems'))),  
+      'descripcion'    => new sfValidatorString(array('max_length' => 256)),  
+      'cantidad'       => new sfValidatorNumber(array('required' => false)),  
+      'costo'          => new sfValidatorNumber(array('required' => false)),  
+      'precio'         => new sfValidatorNumber(array('required' => false)),  
+      'monto_impuesto' => new sfValidatorNumber(array('required' => false)),  
+      'alias_impuesto' => new sfValidatorString(array('max_length' => 128, 'required' => false)),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_tr_docs_detalle_r[%s]');

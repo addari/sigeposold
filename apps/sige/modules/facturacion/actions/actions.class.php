@@ -175,7 +175,7 @@ class facturacionActions extends sfActions
       }catch(Exception $e){
         $conn->rollback();
       }
-      $this->redirect('facturacion/edit?id='.$adm_tr_docs->getId());
+      $this->redirect('facturacion/show?id='.$adm_tr_docs->getId());
     }
   }
 }

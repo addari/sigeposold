@@ -32,20 +32,20 @@ abstract class BaseAdmMaDocsTForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'                 => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'nombre'             => new sfValidatorString(array('max_length' => 100)),
-      'modulo'             => new sfValidatorInteger(),
-      'origen'             => new sfValidatorString(array('max_length' => 50, 'required' => false)),
-      'tipo_fiscal'        => new sfValidatorInteger(array('required' => false)),
-      'afecta_cuentas'     => new sfValidatorInteger(array('required' => false)),
-      'signo_cuentas'      => new sfValidatorString(array('max_length' => 1, 'required' => false)),
-      'contiene_renglones' => new sfValidatorInteger(array('required' => false)),
-      'afecta_inventario'  => new sfValidatorInteger(array('required' => false)),
-      'reserva_inventario' => new sfValidatorInteger(array('required' => false)),
-      'signo_inventario'   => new sfValidatorString(array('max_length' => 1, 'required' => false)),
-      'id_cuenta'          => new sfValidatorInteger(array('required' => false)),
-      'activo'             => new sfValidatorInteger(array('required' => false)),
-      'timestamp'          => new sfValidatorDateTime(),
+      'id'                 => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'nombre'             => new sfValidatorString(array('max_length' => 100)),  
+      'modulo'             => new sfValidatorInteger(),  
+      'origen'             => new sfValidatorString(array('max_length' => 50, 'required' => false)),  
+      'tipo_fiscal'        => new sfValidatorInteger(array('required' => false)),  
+      'afecta_cuentas'     => new sfValidatorInteger(array('required' => false)),  
+      'signo_cuentas'      => new sfValidatorString(array('max_length' => 1, 'required' => false)),  
+      'contiene_renglones' => new sfValidatorInteger(array('required' => false)),  
+      'afecta_inventario'  => new sfValidatorInteger(array('required' => false)),  
+      'reserva_inventario' => new sfValidatorInteger(array('required' => false)),  
+      'signo_inventario'   => new sfValidatorString(array('max_length' => 1, 'required' => false)),  
+      'id_cuenta'          => new sfValidatorInteger(array('required' => false)),  
+      'activo'             => new sfValidatorInteger(array('required' => false)),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_ma_docs_t[%s]');

@@ -72,22 +72,22 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <?php if ( !$sf_user->isAuthenticated() ): ?>
+        <?php if ( $sf_user->isAuthenticated() ): ?>
         <div class="btn-group pull-right">
           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="icon-user"></i> <?= $sf_user->getAttribute("usuario","admin") ?>
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#"><i class="icon-user"></i> Perfil de usuario</a></li>
-            <li class="divider"></li>
+            <!-- <li><a href="#"><i class="icon-user"></i> Perfil de usuario</a></li> -->
+            <!-- <li class="divider"></li> -->
             <li><a href="<?= url_for("acceso/logout") ?>"><i class="icon-off"></i> Cerrar Sesión</a></li>
           </ul> 
         </div>
         <?php endif; ?>
         <a class="brand" href="<?= url_for("main/index") ?>">S.I.G.E</a>
         <div class="nav-collapse collapse">
-          <?php if ( !$sf_user->isAuthenticated() ): ?>
+          <?php if ( $sf_user->isAuthenticated() ): ?>
             <ul class="nav">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-white"></i> Procesos <b class="caret"></b></a>
@@ -107,7 +107,7 @@
               </li>              
             </ul>
           <?php else: ?>
-            <form action="<?= url_for("acceso/checkAcceso") ?>" method="post" class="navbar-form pull-right" >
+            <form action="<?= url_for("acceso/checkacceso") ?>" method="post" class="navbar-form pull-right" >
               <input class="span2" type="text" name="usuario" placeholder="Usuario">
               <input class="span2" type="password" name="clave" placeholder="Contraseña">
               <button type="submit" class="btn">Ingresar</button>

@@ -4,8 +4,8 @@
 <div class="portlet-content">
     <ul class="nav nav-pills">
       <li>
-                  <a href="<?php echo url_for('adm_ma_ident_t/new') ?>"><i class="icon-plus"></i> Crear</a>
-              </li>
+          <a href="<?php echo url_for('adm_ma_ident_t/new') ?>"><i class="icon-plus"></i> Crear</a>
+       </li>
       <li class="active"><a href="#"><i class="icon-th-list"></i> Listar</a></li>
       <li><a class="search-button btn-buscar" href="#"><i class="icon-search"></i> Buscar</a></li>
     </li>

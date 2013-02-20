@@ -24,12 +24,12 @@ abstract class BaseAdmTrDocsFiscalRForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'                 => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'id_documento'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmTrDocs'))),
-      'serial_equipo'      => new sfValidatorString(array('max_length' => 128)),
-      'reimpresion'        => new sfValidatorInteger(array('required' => false)),
-      'numero_comprobante' => new sfValidatorString(array('max_length' => 128)),
-      'timestamp'          => new sfValidatorDateTime(),
+      'id'                 => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'id_documento'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmTrDocs'))),  
+      'serial_equipo'      => new sfValidatorString(array('max_length' => 128)),  
+      'reimpresion'        => new sfValidatorInteger(array('required' => false)),  
+      'numero_comprobante' => new sfValidatorString(array('max_length' => 128)),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_tr_docs_fiscal_r[%s]');

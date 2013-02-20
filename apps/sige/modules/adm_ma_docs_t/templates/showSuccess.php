@@ -1,4 +1,4 @@
-<h3>Tipo de Documento</h3>
+<h3>Tipo de Documentos</h3>
 <hr>
 <div class="content-controles">
   <div class="portlet-content">
@@ -16,7 +16,7 @@
 <table class="lista-show table table-striped table-bordered">
   <thead>
     <tr>
-      <th class="btn-info" colspan="15"><span class='icon-eye-open'></span> Vista Previa de Tipo de Documento</th>
+      <th class="btn-info" colspan="15"><span class='icon-eye-open'></span> Vista Previa de Tipo de Documentos</th>
     </tr>
   </thead>	
   <tbody>
@@ -71,10 +71,6 @@
     <tr>
       <th class="columna-show">Activo:</th>
       <td><?php echo $adm_ma_docs_t->getActivo() ?></td>
-    </tr>
-    <tr>
-      <th class="columna-show">Timestamp:</th>
-      <td><?php echo $adm_ma_docs_t->getTimestamp() ?></td>
     </tr>
   </tbody>
 </table>

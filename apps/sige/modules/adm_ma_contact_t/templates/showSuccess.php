@@ -32,9 +32,5 @@
       <th class="columna-show">Modulo:</th>
       <td><?php echo $adm_ma_contact_t->getModulo() ?></td>
     </tr>
-    <tr>
-      <th class="columna-show">Timestamp:</th>
-      <td><?php echo $adm_ma_contact_t->getTimestamp() ?></td>
-    </tr>
   </tbody>
 </table>

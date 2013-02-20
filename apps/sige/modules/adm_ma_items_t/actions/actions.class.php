@@ -156,7 +156,7 @@ class adm_ma_items_tActions extends sfActions
     {
       $adm_ma_items_t = $form->save();
 
-      $this->redirect('adm_ma_items_t/edit?id='.$adm_ma_items_t->getId());
+      $this->redirect('adm_ma_items_t/show?id='.$adm_ma_items_t->getId());
     }
   }
 }

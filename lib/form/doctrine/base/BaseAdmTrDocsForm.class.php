@@ -31,19 +31,19 @@ abstract class BaseAdmTrDocsForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'                => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'id_empresa'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaEmp'))),
-      'id_tipo'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaDocsT'))),
-      'numero_documento'  => new sfValidatorString(array('max_length' => 128, 'required' => false)),
-      'id_contacto'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaContact'))),
-      'fecha_emision'     => new sfValidatorDate(),
-      'fecha_vencimiento' => new sfValidatorDate(),
-      'monto_exento'      => new sfValidatorNumber(array('required' => false)),
-      'monto_gravado'     => new sfValidatorNumber(array('required' => false)),
-      'monto_impuesto'    => new sfValidatorNumber(array('required' => false)),
-      'monto_descuento'   => new sfValidatorNumber(array('required' => false)),
-      'comentarios'       => new sfValidatorString(array('required' => false)),
-      'timestamp'         => new sfValidatorDateTime(),
+      'id'                => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'id_empresa'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaEmp'))),  
+      'id_tipo'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaDocsT'))),  
+      'numero_documento'  => new sfValidatorString(array('max_length' => 128, 'required' => false)),  
+      'id_contacto'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaContact'))),  
+      'fecha_emision'     => new sfValidatorDate(),  
+      'fecha_vencimiento' => new sfValidatorDate(),  
+      'monto_exento'      => new sfValidatorNumber(array('required' => false)),  
+      'monto_gravado'     => new sfValidatorNumber(array('required' => false)),  
+      'monto_impuesto'    => new sfValidatorNumber(array('required' => false)),  
+      'monto_descuento'   => new sfValidatorNumber(array('required' => false)),  
+      'comentarios'       => new sfValidatorString(array('required' => false)),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_tr_docs[%s]');

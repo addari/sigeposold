@@ -12,5 +12,13 @@ class AdmMaContactTFormFilter extends BaseAdmMaContactTFormFilter
 {
   public function configure()
   {
+
+    $this->setWidgets(array(
+                'nombre'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
+                'modulo'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
+                ));
+
+
+    $this->widgetSchema->setNameFormat('filtro[%s]');
   }
 }

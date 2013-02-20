@@ -22,10 +22,10 @@ abstract class BaseAdmMaEmpUsersRForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'id_empresa' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaEmp'))),
-      'id_usuario' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaUsers'))),
-      'timestamp'  => new sfValidatorDateTime(),
+      'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'id_empresa' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaEmp'))),  
+      'id_usuario' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaUsers'))),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_ma_emp_users_r[%s]');

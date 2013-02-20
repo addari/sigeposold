@@ -22,10 +22,10 @@ abstract class BaseAdmMaContactRForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'id_contacto' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaContact'))),
-      'id_tipo'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaContactT'))),
-      'timestamp'   => new sfValidatorDateTime(),
+      'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'id_contacto' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaContact'))),  
+      'id_tipo'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaContactT'))),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_ma_contact_r[%s]');

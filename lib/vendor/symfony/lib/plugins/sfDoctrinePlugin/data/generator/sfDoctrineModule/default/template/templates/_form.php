@@ -21,8 +21,8 @@
       [?php echo $form ?]
 <?php else: ?>
       [?php echo $form->renderGlobalErrors() ?]
-<?php foreach ($form as $name => $field): if ($field->isHidden()) continue ?>
-      <tr>
+<?php foreach ($form as $name => $field): if (($field->isHidden()) || ($name == "timestamp"))  continue ?>
+      <tr> 
         <th class="linea-left">[?php echo $form['<?php echo $name ?>']->renderLabel() ?]</th>
         <td>
           [?php echo $form['<?php echo $name ?>'] ?]

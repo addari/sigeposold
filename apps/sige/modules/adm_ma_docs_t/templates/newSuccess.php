@@ -1,4 +1,4 @@
-<h3>Tipo de Documento</h3>
+<h3>Tipo de Documentos</h3>
 <hr>
 <div class="content-controles">
   <div class="portlet-content">
@@ -13,5 +13,5 @@
 </div>
 
 <div class="vista-factura">
-<?php include_partial('form', array('form' => $form, "accion_formulario" => "Nuevo Tipo de Documento")) ?>
+<?php include_partial('form', array('form' => $form, "accion_formulario" => "Nuevo Tipo de Documentos")) ?>
 </div>

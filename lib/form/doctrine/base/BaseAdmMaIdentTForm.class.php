@@ -21,9 +21,9 @@ abstract class BaseAdmMaIdentTForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'        => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'nombre'    => new sfValidatorString(array('max_length' => 255)),
-      'timestamp' => new sfValidatorDateTime(),
+      'id'        => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'nombre'    => new sfValidatorString(array('max_length' => 255)),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_ma_ident_t[%s]');

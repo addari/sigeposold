@@ -25,13 +25,13 @@ abstract class BaseAdmMaItemsForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'id_tipo'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaItemsT'))),
-      'nombre'      => new sfValidatorString(array('max_length' => 255)),
-      'costo'       => new sfValidatorNumber(array('required' => false)),
-      'precio'      => new sfValidatorNumber(array('required' => false)),
-      'id_impuesto' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaTax'))),
-      'timestamp'   => new sfValidatorDateTime(),
+      'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),  
+      'id_tipo'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaItemsT'))),  
+      'nombre'      => new sfValidatorString(array('max_length' => 255)),  
+      'costo'       => new sfValidatorNumber(array('required' => false)),  
+      'precio'      => new sfValidatorNumber(array('required' => false)),  
+      'id_impuesto' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('AdmMaTax'))),  
+      'timestamp' => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('adm_ma_items[%s]');

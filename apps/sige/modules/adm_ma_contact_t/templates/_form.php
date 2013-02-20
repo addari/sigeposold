@@ -13,25 +13,18 @@
     </thead>    
     <tbody>
       <?php echo $form->renderGlobalErrors() ?>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['nombre']->renderLabel() ?></th>
         <td>
           <?php echo $form['nombre'] ?>
           <?php echo $form['nombre']->renderError() ?>
         </td>
       </tr>
-      <tr>
+      <tr> 
         <th class="linea-left"><?php echo $form['modulo']->renderLabel() ?></th>
         <td>
           <?php echo $form['modulo'] ?>
           <?php echo $form['modulo']->renderError() ?>
-        </td>
-      </tr>
-      <tr>
-        <th class="linea-left"><?php echo $form['timestamp']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['timestamp'] ?>
-          <?php echo $form['timestamp']->renderError() ?>
         </td>
       </tr>
     </tbody>

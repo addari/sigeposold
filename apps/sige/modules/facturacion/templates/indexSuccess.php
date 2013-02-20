@@ -1,15 +1,27 @@
-<?php include_partial( 'filtro', array( "form_filter" => $form_filter ) ) ?>
-
-<div class="btn-toolbar">
-  <div class="btn-group">
-    <a class="btn" href="<?php echo url_for('facturacion/new') ?>"><span class="icon-plus"></span> Crear</a> 
+<h3>Facturación</h3>
+<hr>
+<div class="content-controles">
+<div class="portlet-content">
+    <ul class="nav nav-pills">
+      <li>
+          <a href="<?php echo url_for('facturacion/new') ?>"><i class="icon-plus"></i> Crear</a>
+       </li>
+      <li class="active"><a href="#"><i class="icon-th-list"></i> Listar</a></li>
+      <li><a class="search-button btn-buscar" href="#"><i class="icon-search"></i> Buscar</a></li>
+    </li>
+  </ul>
+</div>
+  <div class="filtro-modulo-general" <?php echo ($sf_user->getAttribute("filtro.facturacion.activo"))?'style="display:block !important;"':"" ?>>
+    <?php include_partial( 'filtro', array( "form_filter" => $form_filter ) ) ?>
   </div>
 </div>
+
 <div id="mensaje-notifiacion"></div>
+
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th class="btn-info" colspan="9"><span class='icon-list-alt'></span> Lista</th>
+      <th class="btn-info" colspan="8"><span class='icon-list-alt'></span> Lista</th>
     </tr>
     <tr class="btn-inverse">
       <th>Id</th>
@@ -19,7 +31,7 @@
       <th>Fecha de Emisión</th>
       <th>Fecha de Vencimiento</th>
       <th>Total Documento</th>
-      <th>Acciones</th>
+      <th class="acciones-header">Acciones</th>
     </tr>
   </thead>
   <tbody>
