@@ -1,4 +1,4 @@
-<form class="form-factura" action="<?php echo url_for('facturacion/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form class="form-factura" action="<?php echo url_for('adm_tr_docs/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 <?php echo $form->renderHiddenFields(false) ?>
 <?php if (!$form->getObject()->isNew()): ?>
 <input type="hidden" name="sf_method" value="put" />
@@ -25,7 +25,6 @@
           <?php echo $form['fecha_emision']->renderError() ?>
         </td>        
       </tr>
-
       <tr>
         <th class="linea-left"><?php echo $form['numero_documento']->renderLabel() ?></th>
         <td>
@@ -44,7 +43,7 @@
       <tr>
         <th class="linea-left"><?php echo $form['id_contacto']->renderLabel() ?></th>
         <td colspan="3">
-          <a href="#" class="btn btn-buscar buscar-cliente" onclick="javascript: buscarCliente();"><i class="<?= (!$form->getObject()->isNew())?'icon-trash':'icon-search' ?>"></i></a> <?php echo $form['contacto'] ?>
+          <a href="#" class="btn btn-buscar buscar-contacto" onclick="javascript: buscarContacto();"><i class="<?= (!$form->getObject()->isNew())?'icon-trash':'icon-search' ?>"></i></a> <?php echo $form['contacto'] ?>
           <?php echo $form['id_contacto']->renderError() ?>
         </td>
       </tr>   
@@ -72,11 +71,12 @@
       </tr>
       </tbody>
   </table>
-  <a class="btn" href="<?php echo url_for('facturacion/index') ?>"><span class='icon-th-list'></span>  Listar</a>
-  <?php if (!$form->getObject()->isNew()): ?>
-  <button class="btn btn-primary" type="submit"><i class="icon-ok icon-white"></i> Guardar</button>
-  <?php else: ?>
-  <button class="btn btn-primary" type="submit"><i class="icon-ok icon-white"></i> Crear</button>
-  <?php endif; ?>
-  <button class="btn" type="reset" name="yt1"><i class="icon-remove"></i> Limpiar</button>
+  <div class="form-actions">
+        <?php if (!$form->getObject()->isNew()): ?>
+        <button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i> Guardar</button>
+        <?php else: ?>
+        <button class="btn btn-primary" type="submit"><i class="icon-ok icon-white"></i> Crear</button>
+        <?php endif; ?>
+        <button class="btn" type="reset"><i class="icon-remove"></i> Limpiar</button>
+  </div>
 </form>

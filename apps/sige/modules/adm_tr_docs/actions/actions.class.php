@@ -1,32 +1,32 @@
 <?php
 
 /**
- * facturacion actions.
+ * adm_tr_docs actions.
  *
  * @package    sige
- * @subpackage facturacion
+ * @subpackage adm_tr_docs
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class facturacionActions extends sfActions
+class adm_tr_docsActions extends sfActions
 {
 
   private function setFilter($criterios){
-    $this->getUser()->setAttribute("filtro.facturacion.activo", true);  
-    $this->getUser()->setAttribute("filtro.facturacion", $criterios);
+    $this->getUser()->setAttribute("filtro.adm_tr_docs.activo", true);  
+    $this->getUser()->setAttribute("filtro.adm_tr_docs", $criterios);
   }
   
   private function getFilter(){
-    return $this->getUser()->getAttribute("filtro.facturacion");
+    return $this->getUser()->getAttribute("filtro.adm_tr_docs");
   }
   
   private function hasFilter(){
-      return $this->getUser()->getAttribute("filtro.facturacion.activo", false);  
+      return $this->getUser()->getAttribute("filtro.adm_tr_docs.activo", false);  
   }
 
   private function clearFilter(){
-      $this->getUser()->setAttribute("filtro.facturacion.activo", false);  
-      $this->getUser()->setAttribute("filtro.facturacion", "");
+      $this->getUser()->setAttribute("filtro.adm_tr_docs.activo", false);  
+      $this->getUser()->setAttribute("filtro.adm_tr_docs", "");
   }
   
   public function executeFiltrar(sfWebRequest $request)
@@ -34,7 +34,7 @@ class facturacionActions extends sfActions
 
     $filtro = $this->getRequestParameter("filtro");
 
-    $this->form_filter = new FacturacionFilter($filtro);
+    $this->form_filter = new AdmTrDocsFormFilter($filtro);
 
     $this->form_filter->bind($filtro);
     
@@ -57,13 +57,13 @@ class facturacionActions extends sfActions
   public function executeLimpiarFiltro(sfWebRequest $request)
   {
     $this->clearFilter();
-    $this->redirect("facturacion/index");
+    $this->redirect("adm_tr_docs/index");
   }
 
   public function executeIndex(sfWebRequest $request)
   {
     $this->clearFilter();
-    $this->form_filter = new FacturacionFilter();
+    $this->form_filter = new AdmTrDocsFormFilter();
     $max_paginacion = sfConfig::get("app_paginacion");
     $pagina         = $request->getParameter('page', 1);
     $this->adm_tr_docss = new sfDoctrinePager('AdmTrDocs', $max_paginacion);
@@ -79,7 +79,7 @@ class facturacionActions extends sfActions
        $filtro = $this->getFilter();
     }
     
-    $this->form_filter = new FacturacionFilter($filtro);
+    $this->form_filter = new AdmTrDocsFormFilter($filtro);
 
     $max_paginacion = sfConfig::get("app_paginacion");
     $pagina         = $request->getParameter('page', 1);
@@ -112,14 +112,14 @@ class facturacionActions extends sfActions
     $adm_tr_docs = new AdmtrDocs();
     $adm_tr_docs->setIdEmpresa(1);
 
-    $this->form = new FacturacionForm($adm_tr_docs);
+    $this->form = new AdmTrDocsForm($adm_tr_docs);
   }
 
   public function executeCreate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST));
 
-    $this->form = new FacturacionForm();
+    $this->form = new AdmTrDocsForm();
 
     $this->processForm($request, $this->form);
 
@@ -128,16 +128,16 @@ class facturacionActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->forward404Unless($factura = Doctrine_Core::getTable('AdmTrDocs')->find(array($request->getParameter('id'))), sprintf('Object adm_tr_docs does not exist (%s).', $request->getParameter('id')));
-    $this->form = new FacturacionForm($factura);
-    $this->factura = $factura;
+    $this->forward404Unless($adm_tr_docs = Doctrine_Core::getTable('AdmTrDocs')->find(array($request->getParameter('id'))), sprintf('Object adm_tr_docs does not exist (%s).', $request->getParameter('id')));
+    $this->form = new AdmTrDocsForm($adm_tr_docs);
+    $this->adm_tr_docs = $adm_tr_docs;
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
     $this->forward404Unless($adm_tr_docs = Doctrine_Core::getTable('AdmTrDocs')->find(array($request->getParameter('id'))), sprintf('Object adm_tr_docs does not exist (%s).', $request->getParameter('id')));
-    $this->form = new FacturacionForm($adm_tr_docs);
+    $this->form = new AdmTrDocsForm($adm_tr_docs);
 
     $this->processForm($request, $this->form);
     $this->factura = $adm_tr_docs;
@@ -151,7 +151,7 @@ class facturacionActions extends sfActions
     $this->forward404Unless($adm_tr_docs = Doctrine_Core::getTable('AdmTrDocs')->find(array($request->getParameter('id'))), sprintf('Object adm_tr_docs does not exist (%s).', $request->getParameter('id')));
     $adm_tr_docs->delete();
 
-    $this->redirect('facturacion/index');
+    $this->redirect('adm_tr_docs/index');
   }
 
   public function executeRenglonitem(sfWebRequest $request)
@@ -175,7 +175,7 @@ class facturacionActions extends sfActions
       }catch(Exception $e){
         $conn->rollback();
       }
-      $this->redirect('facturacion/show?id='.$adm_tr_docs->getId());
+      $this->redirect('adm_tr_docs/show?id='.$adm_tr_docs->getId());
     }
   }
 }

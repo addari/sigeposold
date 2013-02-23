@@ -1,32 +1,32 @@
 <?php
 
 /**
- * items actions.
+ * adm_ma_items actions.
  *
  * @package    sige
- * @subpackage items
+ * @subpackage adm_ma_items
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class itemsActions extends sfActions
+class adm_ma_itemsActions extends sfActions
 {
 
   private function setFilter($criterios){
-    $this->getUser()->setAttribute("filtro.items.activo", true);  
-    $this->getUser()->setAttribute("filtro.items", $criterios);
+    $this->getUser()->setAttribute("filtro.adm_ma_items.activo", true);  
+    $this->getUser()->setAttribute("filtro.adm_ma_items", $criterios);
   }
   
   private function getFilter(){
-    return $this->getUser()->getAttribute("filtro.items");
+    return $this->getUser()->getAttribute("filtro.adm_ma_items");
   }
   
   private function hasFilter(){
-      return $this->getUser()->getAttribute("filtro.items.activo", false);  
+      return $this->getUser()->getAttribute("filtro.adm_ma_items.activo", false);  
   }
 
   private function clearFilter(){
-      $this->getUser()->setAttribute("filtro.items.activo", false);  
-      $this->getUser()->setAttribute("filtro.items", "");
+      $this->getUser()->setAttribute("filtro.adm_ma_items.activo", false);  
+      $this->getUser()->setAttribute("filtro.adm_ma_items", "");
   }
 
   public function executeIndex(sfWebRequest $request)
@@ -54,15 +54,15 @@ class itemsActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->forward404Unless($adm_ma_items = Doctrine_Core::getTable('AdmMaItems')->find(array($request->getParameter('id'))), sprintf('Object adm_ma_items does not exist (%s).', $request->getParameter('id')));
-    $this->form = new AdmMaItemsForm($adm_ma_items);
+    $this->forward404Unless($$adm_ma_items = Doctrine_Core::getTable('AdmMaItems')->find(array($request->getParameter('id'))), sprintf('Object $adm_ma_items does not exist (%s).', $request->getParameter('id')));
+    $this->form = new AdmMaItemsForm($$adm_ma_items);
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($adm_ma_items = Doctrine_Core::getTable('AdmMaItems')->find(array($request->getParameter('id'))), sprintf('Object adm_ma_items does not exist (%s).', $request->getParameter('id')));
-    $this->form = new AdmMaItemsForm($adm_ma_items);
+    $this->forward404Unless($$adm_ma_items = Doctrine_Core::getTable('AdmMaItems')->find(array($request->getParameter('id'))), sprintf('Object $adm_ma_items does not exist (%s).', $request->getParameter('id')));
+    $this->form = new AdmMaItemsForm($$adm_ma_items);
 
     $this->processForm($request, $this->form);
 
@@ -73,10 +73,10 @@ class itemsActions extends sfActions
   {
     $request->checkCSRFProtection();
 
-    $this->forward404Unless($adm_ma_items = Doctrine_Core::getTable('AdmMaItems')->find(array($request->getParameter('id'))), sprintf('Object adm_ma_items does not exist (%s).', $request->getParameter('id')));
-    $adm_ma_items->delete();
+    $this->forward404Unless($$adm_ma_items = Doctrine_Core::getTable('AdmMaItems')->find(array($request->getParameter('id'))), sprintf('Object $adm_ma_items does not exist (%s).', $request->getParameter('id')));
+    $$adm_ma_items->delete();
 
-    $this->redirect('items/index');
+    $this->redirect('adm_ma_items/index');
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -84,9 +84,9 @@ class itemsActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      $adm_ma_items = $form->save();
+      $$adm_ma_items = $form->save();
 
-      $this->redirect('items/edit?id='.$adm_ma_items->getId());
+      $this->redirect('adm_ma_items/edit?id='.$$adm_ma_items->getId());
     }
   }
 
@@ -96,6 +96,7 @@ class itemsActions extends sfActions
     $max_paginacion = sfConfig::get("app_paginacion");
     $pagina         = $request->getParameter('page',1);
     $this->adm_ma_itemss = new sfDoctrinePager('AdmMaItems', $max_paginacion);
+    
     $this->adm_ma_itemss->setPage( $pagina );
     $this->adm_ma_itemss->init();
     $this->setLayout("layout_mini");

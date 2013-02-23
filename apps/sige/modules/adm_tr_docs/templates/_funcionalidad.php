@@ -1,5 +1,6 @@
 <?php
 $items = array();
+
 if( !$form->isNew() ){
 
 foreach ( $factura->AdmTrDocsDetalleR  as $filas){
@@ -39,17 +40,17 @@ agregarItem = function(opt){
 	
 };
 
-buscarCliente = function () {
-	esEventoLimpiarSeleccion = ($(".buscar-cliente").find("i").is(".icon-trash")) ? true : false;
+buscarContacto = function () {
+	esEventoLimpiarSeleccion = ($(".buscar-contacto").find("i").is(".icon-trash")) ? true : false;
 	
 	if( esEventoLimpiarSeleccion ) {
-		$(".buscar-cliente").find("i").addClass("icon-search")
-		$(".buscar-cliente").find("i").removeClass("icon-trash");
+		$(".buscar-contacto").find("i").addClass("icon-search")
+		$(".buscar-contacto").find("i").removeClass("icon-trash");
 		$("#factura_id_contacto").val("");
 		$("#factura_contacto").val("");
 		$("#factura_exonerado").val("");
 	}else{
-		window.showModalDialog("<?= url_for('clientes/buscarContactoFactura') ?>","", "dialogWidth:800px; dialogHeight:480px; center:yes");	
+		window.showModalDialog("<?= url_for('adm_ma_contact/buscarContactoFactura') ?>","", "dialogWidth:800px; dialogHeight:480px; center:yes");	
 	}
 }
 
@@ -59,8 +60,8 @@ agregarContacto = function( contacto ) {
     $("#factura_contacto").val(contacto.nombre);
     $("#factura_exonerado").val(contacto.exonerado);
 
-	$(".buscar-cliente").removeClass("icon-search");
-	$(".buscar-cliente").find("i").addClass("icon-trash");
+	$(".buscar-contacto").removeClass("icon-search");
+	$(".buscar-contacto").find("i").addClass("icon-trash");
 	$(".mensaje").html("");
 }
 
@@ -286,7 +287,7 @@ App.Facturacion.View.ContenedorFactura = Backbone.View.extend({
 											   mensaje: "Debe seleccionar los datos del cliente.",
 											   selector: '.mensaje' });
 		}else{
-			window.showModalDialog("<?= url_for('items/buscarItemFactura') ?>","", "dialogWidth:800px; dialogHeight:480px; center:yes");
+			window.showModalDialog("<?= url_for('adm_ma_items/buscarItemFactura') ?>","", "dialogWidth:800px; dialogHeight:480px; center:yes");
 		}
 	},
 
@@ -343,7 +344,31 @@ $(function(){
 				$(".mensaje").html ("");
 			}
 	        $("#factura_fecha_vencimiento").datepicker('hide');
-    	});
+    });
 
+	$("button[type='submit']").click(function(){
+		var sfechaInicio  = $("#factura_fecha_emision").val(),
+			fechaInicio   = new Date(moment(sfechaInicio, App.Param.FormatoFecha)).getTime(),
+		    sfechaFinal  = $("#factura_fecha_vencimiento").val(),
+		    fechaFinal   = new Date(moment(sfechaFinal, App.Param.FormatoFecha)).getTime(),
+		    id_contacto = $("#factura_id_contacto").val();
+			
+		
+		if ( _.str.isBlank(id_contacto) ) {
+			App.Helpers.MensajeNotificacion ({ tipo: 'error', 
+											   mensaje: "Debe seleccionar los datos del cliente.",
+											   selector: '.mensaje' });
+			return false;
+		}else if ( fechaFinal < fechaInicio ){
+			App.Helpers.MensajeNotificacion ({ tipo: 'error', 
+											   mensaje: "Rango de fecha invalido.",
+											   selector: '.mensaje' });
+			return false;
+		}else {
+			$(".mensaje").html ("");
+			return true;
+		}		    		    
+	});
+  
 });
 </script>

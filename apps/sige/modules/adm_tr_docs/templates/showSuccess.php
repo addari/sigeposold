@@ -1,11 +1,11 @@
-<h3>Tipo de Identificación</h3>
+<h3>Facturación</h3>
 <hr>
 <div class="content-controles">
   <div class="portlet-content">
       <ul class="nav nav-pills">
-        <li><a href="<?php echo url_for('facturacion/new') ?>"><i class="icon-plus"></i> Crear</a></li>
-        <li><a href="<?php echo url_for('facturacion/index') ?>"><i class="icon-th-list"></i> Listar</a></li>
-        <li><a href="<?php echo url_for('facturacion/edit?id='.$adm_tr_docs->getId()) ?>"><i class="icon-edit"></i> Modificar</a></li>
+        <li><a href="<?php echo url_for('adm_tr_docs/new') ?>"><i class="icon-plus"></i> Crear</a></li>
+        <li><a href="<?php echo url_for('adm_tr_docs/index') ?>"><i class="icon-th-list"></i> Listar</a></li>
+        <li><a href="<?php echo url_for('adm_tr_docs/edit?id='.$adm_tr_docs->getId()) ?>"><i class="icon-edit"></i> Modificar</a></li>
         <li class="active"><a href="#"><i class="icon-eye-open"></i> Ver</a></li>
       </li>
     </ul>
@@ -19,6 +19,10 @@
     </tr>
   </thead>  
   <tbody>
+    <tr>
+      <th class="columna-show">Tipo de Documento:</th>
+      <td><?php echo $adm_tr_docs->AdmMaDocsT->nombre ?></td>
+    </tr>    
     <tr>
       <th class="columna-show">Nro. de Documento:</th>
       <td><?php echo $adm_tr_docs->getNumeroDocumento() ?></td>

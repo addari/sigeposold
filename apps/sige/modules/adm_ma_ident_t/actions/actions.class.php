@@ -84,6 +84,8 @@ class adm_ma_ident_tActions extends sfActions
     $this->adm_ma_ident_ts->init();
 
     $this->setTemplate("index");
+
+
   }    
 
   public function executeIndex(sfWebRequest $request)
@@ -97,8 +99,6 @@ class adm_ma_ident_tActions extends sfActions
     $this->adm_ma_ident_ts->setPage( $pagina );
     $this->adm_ma_ident_ts->init();
   }
-
-
 
   public function executeShow(sfWebRequest $request)
   {
@@ -124,15 +124,15 @@ class adm_ma_ident_tActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->forward404Unless($this->adm_ma_ident_t = Doctrine_Core::getTable('AdmMaIdentT')->find(array($request->getParameter('id'))), sprintf('Object adm_ma_ident_t does not exist (%s).', $request->getParameter('id')));
-    $this->form = new AdmMaIdentTForm($this->adm_ma_ident_t);
+    $this->forward404Unless($adm_ma_ident_t = Doctrine_Core::getTable('AdmMaIdentT')->find(array($request->getParameter('id'))), sprintf('Object adm_ma_ident_t does not exist (%s).', $request->getParameter('id')));
+    $this->form = new AdmMaIdentTForm($adm_ma_ident_t);
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($this->adm_ma_ident_t = Doctrine_Core::getTable('AdmMaIdentT')->find(array($request->getParameter('id'))), sprintf('Object adm_ma_ident_t does not exist (%s).', $request->getParameter('id')));
-    $this->form = new AdmMaIdentTForm($this->adm_ma_ident_t);
+    $this->forward404Unless($adm_ma_ident_t = Doctrine_Core::getTable('AdmMaIdentT')->find(array($request->getParameter('id'))), sprintf('Object adm_ma_ident_t does not exist (%s).', $request->getParameter('id')));
+    $this->form = new AdmMaIdentTForm($adm_ma_ident_t);
 
     $this->processForm($request, $this->form);
 
@@ -156,7 +156,7 @@ class adm_ma_ident_tActions extends sfActions
     {
       $adm_ma_ident_t = $form->save();
 
-      $this->redirect('adm_ma_ident_t/edit?id='.$adm_ma_ident_t->getId());
+      $this->redirect('adm_ma_ident_t/show?id='.$adm_ma_ident_t->getId());
     }
   }
 }

@@ -4,14 +4,14 @@
 <div class="portlet-content">
     <ul class="nav nav-pills">
       <li>
-          <a href="<?php echo url_for('facturacion/new') ?>"><i class="icon-plus"></i> Crear</a>
+          <a href="<?php echo url_for('adm_tr_docs/new') ?>"><i class="icon-plus"></i> Crear</a>
        </li>
       <li class="active"><a href="#"><i class="icon-th-list"></i> Listar</a></li>
       <li><a class="search-button btn-buscar" href="#"><i class="icon-search"></i> Buscar</a></li>
     </li>
   </ul>
 </div>
-  <div class="filtro-modulo-general" <?php echo ($sf_user->getAttribute("filtro.facturacion.activo"))?'style="display:block !important;"':"" ?>>
+  <div class="filtro-modulo-general" <?php echo ($sf_user->getAttribute("filtro.adm_tr_docs.activo"))?'style="display:block !important;"':"" ?>>
     <?php include_partial( 'filtro', array( "form_filter" => $form_filter ) ) ?>
   </div>
 </div>
@@ -45,14 +45,14 @@
       <td><?php echo $adm_tr_docs->getDateTimeObject("fecha_vencimiento")->format("d/m/Y") ?></td>
       <td class="total-columna-number"><?= Helpers::FormatearMonto($adm_tr_docs->monto_exento + $adm_tr_docs->monto_gravado + $adm_tr_docs->monto_impuesto) ?></td>
       <td>
-        <a class="btn" href="<?php echo url_for('facturacion/show?id='.$adm_tr_docs->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
+        <a class="btn" href="<?php echo url_for('adm_tr_docs/show?id='.$adm_tr_docs->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
         <?php if ( $adm_tr_docs->AdmTrDocsFiscalR->count() == 0 ): ?>
-          <a class="btn" href="<?php echo url_for('facturacion/edit?id='.$adm_tr_docs->getId()) ?>" title="Modificar"><span class='icon-pencil'></span></a>
+          <a class="btn" href="<?php echo url_for('adm_tr_docs/edit?id='.$adm_tr_docs->getId()) ?>" title="Modificar"><span class='icon-pencil'></span></a>
         <?php else: ?>
           <a class="btn disabled" href="#" title="Modificar" onclick="javascript: App.Helpers.MensajeNotificacion ({tipo: 'error', mensaje: 'No es posible editar el documento por tener impresión fiscal.',selector:'#mensaje-notifiacion'});return false;"><span class='icon-pencil'></span></a>
         <?php endif; ?>
         <?php if ( $adm_tr_docs->AdmTrDocsDetalleR->count() == 0 ): ?>
-          <?php echo link_to('<span class="icon-trash"></span>', 'facturacion/delete?id='.$adm_tr_docs->getId(), array('method' => 'delete', 'confirm' => '¿Realmente desea eliminar éste registro?' , 'class' => 'btn', "title"=>"Eliminar")) ?>
+          <?php echo link_to('<span class="icon-trash"></span>', 'adm_tr_docs/delete?id='.$adm_tr_docs->getId(), array('method' => 'delete', 'confirm' => '¿Realmente desea eliminar éste registro?' , 'class' => 'btn', "title"=>"Eliminar")) ?>
         <?php else: ?>
           <a class="btn disabled" href="#" title="Eliminar" onclick="javascript: App.Helpers.MensajeNotificacion ({tipo: 'error', mensaje: 'Este documento contiene items, por favor elimine los items para poder eliminarlo.',selector:'#mensaje-notifiacion'});return false;"><span class='icon-trash'></span></a>
         <?php endif; ?>
@@ -87,15 +87,15 @@
 <?php if ($adm_tr_docss->haveToPaginate()): ?>
   <div class="pagination pagination-centered">
     <ul>
-      <li><a href="<?php echo url_for('facturacion/navegacion') ?>?page=1">«</a></li>
+      <li><a href="<?php echo url_for('adm_tr_docs/navegacion') ?>?page=1">«</a></li>
       <?php foreach ($adm_tr_docss->getLinks() as $page): ?>
         <?php if ($page == $adm_tr_docss->getPage()): ?>
           <li class="disabled"><a href="#"><b><?php echo $page ?></b></a></li>
         <?php else: ?>
-          <li><a href="<?php echo url_for('facturacion/navegacion') ?>?page=<?php echo $page ?>"><?php echo $page ?></a></li>
+          <li><a href="<?php echo url_for('adm_tr_docs/navegacion') ?>?page=<?php echo $page ?>"><?php echo $page ?></a></li>
         <?php endif; ?>
       <?php endforeach; ?>
-      <li><a href="<?php echo url_for('facturacion/navegacion') ?>?page=<?php echo $adm_tr_docss->getLastPage() ?>">»</a></li>
+      <li><a href="<?php echo url_for('adm_tr_docs/navegacion') ?>?page=<?php echo $adm_tr_docss->getLastPage() ?>">»</a></li>
    </ul>
   </div>
 <?php endif; ?>

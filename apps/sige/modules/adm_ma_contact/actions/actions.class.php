@@ -1,32 +1,32 @@
 <?php
 
 /**
- * clientes actions.
+ * adm_ma_contact actions.
  *
  * @package    sige
- * @subpackage clientes
+ * @subpackage adm_ma_contact
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class clientesActions extends sfActions
+class adm_ma_contactActions extends sfActions
 {
 
   private function setFilter($criterios){
-    $this->getUser()->setAttribute("filtro.clientes.activo", true);  
-    $this->getUser()->setAttribute("filtro.clientes", $criterios);
+    $this->getUser()->setAttribute("filtro.adm_ma_contact.activo", true);  
+    $this->getUser()->setAttribute("filtro.adm_ma_contact", $criterios);
   }
   
   private function getFilter(){
-    return $this->getUser()->getAttribute("filtro.clientes");
+    return $this->getUser()->getAttribute("filtro.adm_ma_contact");
   }
   
   private function hasFilter(){
-      return $this->getUser()->getAttribute("filtro.clientes.activo", false);  
+      return $this->getUser()->getAttribute("filtro.adm_ma_contact.activo", false);  
   }
 
   private function clearFilter(){
-      $this->getUser()->setAttribute("filtro.clientes.activo", false);  
-      $this->getUser()->setAttribute("filtro.clientes", "");
+      $this->getUser()->setAttribute("filtro.adm_ma_contact.activo", false);  
+      $this->getUser()->setAttribute("filtro.adm_ma_contact", "");
   }
 
   public function executeIndex(sfWebRequest $request)
@@ -76,7 +76,7 @@ class clientesActions extends sfActions
     $this->forward404Unless($adm_ma_contact = Doctrine_Core::getTable('AdmMaContact')->find(array($request->getParameter('id'))), sprintf('Object adm_ma_contact does not exist (%s).', $request->getParameter('id')));
     $adm_ma_contact->delete();
 
-    $this->redirect('clientes/index');
+    $this->redirect('adm_ma_contact/index');
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -86,7 +86,7 @@ class clientesActions extends sfActions
     {
       $adm_ma_contact = $form->save();
 
-      $this->redirect('clientes/edit?id='.$adm_ma_contact->getId());
+      $this->redirect('adm_ma_contact/edit?id='.$adm_ma_contact->getId());
     }
   }
 

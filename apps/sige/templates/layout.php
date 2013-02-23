@@ -92,14 +92,14 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-white"></i> Procesos <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<?= url_for("facturacion/index") ?>">Facturación</a></li>
+                  <li><a href="<?= url_for("adm_tr_docs/index") ?>">Facturación</a></li>
                 </ul>
               </li>              
 
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-white"></i> Mantenimiento <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<?= url_for("tipo_identificacion/index") ?>">Tipo de Identificación</a></li>
+                  <li><a href="<?= url_for("adm_ma_ident_t/index") ?>">Tipo de Identificación</a></li>
                   <li><a href="<?= url_for("adm_ma_contact_t/index") ?>">Tipo de Contacto</a></li>
                   <li><a href="<?= url_for("adm_ma_docs_t/index") ?>">Tipo de Documento</a></li>
                   <li><a href="<?= url_for("adm_ma_items_t/index") ?>">Tipo de Productos</a></li>

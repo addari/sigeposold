@@ -4,7 +4,7 @@ agregarContacto = function ( contacto ) {
   window.close();
 }
 </script>
-<form action="<?php echo url_for('clientes/filtrarContactoFactura') ?>" method="post">
+<form action="<?php echo url_for('adm_ma_contact/filtrarContactoFactura') ?>" method="post">
 <?php echo $form_filter->renderHiddenFields(); ?>
 <table class="table table-bordered sin-lineas-border">
     <thead>
@@ -22,7 +22,7 @@ agregarContacto = function ( contacto ) {
       <td>
         <?php echo $form_filter['nombre'] ?> 
         <button class="btn" type="submit"><span class="icon-search"></span> Buscar</button> 
-        <button class="btn" onclick="window.location.href='<?= url_for("clientes/buscarContactoFactura")?>';" type="reset">Limpiar</button>
+        <button class="btn" onclick="window.location.href='<?= url_for("adm_ma_contact/buscarContactoFactura")?>';" type="reset">Limpiar</button>
         <button class="btn" onclick="window.close()">Cerrar</button>
       </td>
     </tr>
@@ -72,15 +72,15 @@ agregarContacto = function ( contacto ) {
 <?php if ($adm_ma_contacts->haveToPaginate()): ?>
   <div class="pagination pagination-centered">
     <ul>
-      <li><a href="<?php echo url_for('clientes/navegacionContactoFactura') ?>?page=1">«</a></li>
+      <li><a href="<?php echo url_for('adm_ma_contact/navegacionContactoFactura') ?>?page=1">«</a></li>
       <?php foreach ($adm_ma_contacts->getLinks() as $page): ?>
         <?php if ($page == $adm_ma_contacts->getPage()): ?>
           <li class="disabled"><a href="#"><b><?php echo $page ?></b></a></li>
         <?php else: ?>
-          <li><a href="<?php echo url_for('clientes/navegacionContactoFactura') ?>?page=<?php echo $page ?>"><?php echo $page ?></a></li>
+          <li><a href="<?php echo url_for('adm_ma_contact/navegacionContactoFactura') ?>?page=<?php echo $page ?>"><?php echo $page ?></a></li>
         <?php endif; ?>
       <?php endforeach; ?>
-      <li><a href="<?php echo url_for('clientes/navegacionContactoFactura') ?>?page=<?php echo $adm_ma_contacts->getLastPage() ?>">»</a></li>
+      <li><a href="<?php echo url_for('adm_ma_contact/navegacionContactoFactura') ?>?page=<?php echo $adm_ma_contacts->getLastPage() ?>">»</a></li>
    </ul>
   </div>
 <?php endif; ?>
