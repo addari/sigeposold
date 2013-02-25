@@ -12,4 +12,7 @@
  */
 class AdmMaContactT extends BaseAdmMaContactT
 {
+	public function __toString(){
+		return $this->getNombre();
+	}
 }

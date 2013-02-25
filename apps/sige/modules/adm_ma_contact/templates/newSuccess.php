@@ -1,4 +1,17 @@
-<fieldset>
-<legend><h3>Nuevo Adm ma contact</h3></legend>
-<?php include_partial('form', array('form' => $form)) ?>
-</fieldset>
+<h3>Contactos</h3>
+<hr>
+<div class="content-controles">
+  <div class="portlet-content">
+      <ul class="nav nav-pills">
+        <li class="active">
+                      <a href="<?php echo url_for('adm_ma_contact/new') ?>"><i class="icon-plus"></i> Crear</a>
+                  </li>
+                <li><a href="<?php echo url_for('adm_ma_contact/index') ?>"><i class="icon-th-list"></i> Lista</a><li>
+              </li>
+    </ul>
+  </div>
+</div>
+
+<div class="vista-factura">
+<?php include_partial('form', array('form' => $form, "accion_formulario" => "Nuevo Contactos")) ?>
+</div>

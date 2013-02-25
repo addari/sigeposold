@@ -10,7 +10,7 @@
 
     <!-- Bootstrap -->
     <?= stylesheet_tag('bootstrap.css') ?>
-
+    
     <!-- Styles Less Generales -->
     <?= stylesheet_tag('main.less',array('rel' => 'stylesheet/less')) ?>
     <?= stylesheet_tag('facturacion.less',array('rel' => 'stylesheet/less')) ?>
@@ -99,10 +99,16 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-white"></i> Mantenimiento <b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                  <li><a href="<?= url_for("adm_ma_users/index") ?>">Usuarios</a></li> 
+                  <li><a href="<?= url_for("adm_ma_contact/index") ?>">Contactos</a></li>
+                  <li><a href="<?= url_for("adm_ma_emp/index") ?>">Empresas</a></li>
+                  <li><a href="<?= url_for("adm_ma_emp_users_r/index") ?>">Relación Empresas - Usuarios</a></li>
                   <li><a href="<?= url_for("adm_ma_ident_t/index") ?>">Tipo de Identificación</a></li>
+                  <li><a href="<?= url_for("adm_ma_contact_r/index") ?>">Relación Contacto - Tipo</a></li>
                   <li><a href="<?= url_for("adm_ma_contact_t/index") ?>">Tipo de Contacto</a></li>
                   <li><a href="<?= url_for("adm_ma_docs_t/index") ?>">Tipo de Documento</a></li>
                   <li><a href="<?= url_for("adm_ma_items_t/index") ?>">Tipo de Productos</a></li>
+                  <li><a href="<?= url_for("adm_ma_tax/index") ?>">Tipo de Impuesto</a></li>
                 </ul>
               </li>              
             </ul>

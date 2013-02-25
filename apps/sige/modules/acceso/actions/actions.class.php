@@ -29,7 +29,9 @@ class accesoActions extends sfActions
   				from("AdmMaUsers u")->
   				innerJoin("u.AdmMaContact c")->
   				where("u.username = ?",$usuario)->
-  				andWhere("u.password = sha1(?)",$clave)->fetchOne();
+  				andWhere("u.password = sha1(?)",$clave)->
+          andWhere("u.activo = ?",true)->
+          fetchOne();
 
   	if($reg){
       $this->getUser()->setAuthenticated(true);

@@ -1,6 +1,6 @@
 <form action="<?php echo url_for('adm_ma_items_t/filtrar') ?>" class="form-horizontal" method="post">
     <div class="control-group">
-    <?php echo $form_filter['nombre']->renderLabel(array(),array("class"=>"control-label")) ?>
+    <?php echo $form_filter['nombre']->renderLabel(null,array("class"=>"control-label")) ?>
     <div class="controls">
     <?php echo $form_filter['nombre'] ?>
     <?php echo $form_filter['nombre']->renderError() ?>

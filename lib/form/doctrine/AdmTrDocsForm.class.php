@@ -116,7 +116,6 @@ class AdmTrDocsForm extends BaseAdmTrDocsForm
           $detalle_item->save( $con );
       }
     return $documento;
-
   }
 
 

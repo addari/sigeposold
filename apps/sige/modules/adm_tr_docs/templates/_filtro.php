@@ -1,69 +1,56 @@
 
-<form action="<?php echo url_for('adm_tr_docs/filtrar') ?>" method="post">
+<form action="<?php echo url_for('adm_tr_docs/filtrar') ?>" class="form-horizontal" method="post">
   <?php echo $form_filter->renderHiddenFields(false) ?>
-<table class="table table-bordered sin-lineas-border filtro-modulo-general">
-    <thead>
-    <tr>
-      <th colspan="2" class="btn-info">
-        <span class='icon-search'></span> <strong> Busqueda de Item</strong>
-      </th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th class="linea-left">
-          <?php echo $form_filter['id']->renderLabel() ?>
-        </th>
-        <td>
-          <?php echo $form_filter['id'] ?> 
-        </td>
-      </tr>      
-      <tr>
-        <th class="linea-left">
-          <?php echo $form_filter['id_tipo']->renderLabel() ?>
-        </th>
-        <td>
-          <?php echo $form_filter['id_tipo'] ?> 
-        </td>
-      </tr>
-      <tr>
-        <th class="linea-left">
-          <?php echo $form_filter['numero_documento']->renderLabel() ?>
-        </th>
-        <td>
-          <?php echo $form_filter['numero_documento'] ?> 
-        </td>
-      </tr>
-      <tr>
-        <th class="linea-left">
-          <?php echo $form_filter['contacto']->renderLabel() ?>
-        </th>
-        <td>
-          <?php echo $form_filter['contacto'] ?> 
-        </td>
-      </tr>       
-      <tr>
-          <th class="linea-left">
-            <?php echo $form_filter['fecha_emision']->renderLabel() ?>
-          </th>
-          <td>
-            <?php echo $form_filter['fecha_emision'] ?> 
-          </td>
-      </tr>
-      <tr>
-          <th class="linea-left">
-            <?php echo $form_filter['fecha_vencimiento']->renderLabel() ?>
-          </th>
-          <td>
-            <?php echo $form_filter['fecha_vencimiento'] ?> 
-          </td>
-      </tr>
+  <div class="control-group">
+    <?php echo $form_filter['id']->renderLabel(null,array("class"=>"control-label")) ?>
+    <div class="controls">
+    <?php echo $form_filter['id'] ?>
+    <?php echo $form_filter['id']->renderError() ?>
+    </div>
+  </div>
 
-      <th colspan="2" class="linea-left">
-      	<button class="btn" type="submit"><span class="icon-search"></span> Buscar</button> 
-        <button class="btn" onclick="window.location.href='<?= url_for("adm_tr_docs/limpiarFiltro")?>';" type="reset">Limpiar</button>
-      </th>
-    </tr>
-    </tbody>
-</table>
+  <div class="control-group">
+    <?php echo $form_filter['id_tipo']->renderLabel(null,array("class"=>"control-label")) ?>
+    <div class="controls">
+    <?php echo $form_filter['id_tipo'] ?>
+    <?php echo $form_filter['id_tipo']->renderError() ?>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <?php echo $form_filter['numero_documento']->renderLabel(null,array("class"=>"control-label")) ?>
+    <div class="controls">
+    <?php echo $form_filter['numero_documento'] ?>
+    <?php echo $form_filter['numero_documento']->renderError() ?>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <?php echo $form_filter['contacto']->renderLabel(null,array("class"=>"control-label")) ?>
+    <div class="controls">
+    <?php echo $form_filter['contacto'] ?>
+    <?php echo $form_filter['contacto']->renderError() ?>
+    </div>
+  </div>  
+
+  <div class="control-group">
+    <?php echo $form_filter['fecha_emision']->renderLabel(null,array("class"=>"control-label")) ?>
+    <div class="controls">
+    <?php echo $form_filter['fecha_emision'] ?>
+    <?php echo $form_filter['fecha_emision']->renderError() ?>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <?php echo $form_filter['fecha_vencimiento']->renderLabel(null,array("class"=>"control-label")) ?>
+    <div class="controls">
+    <?php echo $form_filter['fecha_vencimiento'] ?>
+    <?php echo $form_filter['fecha_vencimiento']->renderError() ?>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit"><i class="icon-search icon-white"></i> Buscar</button>   
+    <button class="btn" onclick="window.location.href='<?= url_for("adm_tr_docs/limpiarFiltro")?>';"  type="reset"><i class="icon-remove"></i> Limpiar</button> 
+  </div>
 </form>

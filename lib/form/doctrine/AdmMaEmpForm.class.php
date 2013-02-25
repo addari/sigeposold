@@ -12,5 +12,9 @@ class AdmMaEmpForm extends BaseAdmMaEmpForm
 {
   public function configure()
   {
+  	$this->widgetSchema->setLabels(array(
+  	  'numero_identificacion'  => "Numero de Identificación",
+      'id_tipo_identificacion' => "Tipo de Identificación"
+    ));
   }
 }

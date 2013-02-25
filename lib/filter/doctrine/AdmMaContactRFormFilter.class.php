@@ -12,5 +12,9 @@ class AdmMaContactRFormFilter extends BaseAdmMaContactRFormFilter
 {
   public function configure()
   {
+    $this->widgetSchema->setLabels(array(
+      'id_contacto' => "Contacto",
+      'id_tipo' => "Tipo"
+    ));  	
   }
 }

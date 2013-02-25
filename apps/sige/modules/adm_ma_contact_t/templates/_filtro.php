@@ -1,13 +1,13 @@
 <form action="<?php echo url_for('adm_ma_contact_t/filtrar') ?>" class="form-horizontal" method="post">
     <div class="control-group">
-    <?php echo $form_filter['nombre']->renderLabel(array(),array("class"=>"control-label")) ?>
+    <?php echo $form_filter['nombre']->renderLabel(null,array("class"=>"control-label")) ?>
     <div class="controls">
     <?php echo $form_filter['nombre'] ?>
     <?php echo $form_filter['nombre']->renderError() ?>
     </div>
   </div>
     <div class="control-group">
-    <?php echo $form_filter['modulo']->renderLabel(array(),array("class"=>"control-label")) ?>
+    <?php echo $form_filter['modulo']->renderLabel(null,array("class"=>"control-label")) ?>
     <div class="controls">
     <?php echo $form_filter['modulo'] ?>
     <?php echo $form_filter['modulo']->renderError() ?>

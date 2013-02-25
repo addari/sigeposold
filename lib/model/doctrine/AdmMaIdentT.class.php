@@ -12,4 +12,7 @@
  */
 class AdmMaIdentT extends BaseAdmMaIdentT
 {
+	 public function __toString(){
+		return $this->getNombre();
+	}
 }

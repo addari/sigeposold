@@ -12,4 +12,7 @@
  */
 class AdmMaUsers extends BaseAdmMaUsers
 {
+	 public function __toString(){
+		return $this->getUsername();
+	}	
 }

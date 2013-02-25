@@ -54,7 +54,7 @@
       <td><?php echo $adm_ma_docs_t->getReservaInventario() ?></td>
       <td><?php echo $adm_ma_docs_t->getSignoInventario() ?></td>
       <td><?php echo $adm_ma_docs_t->getIdCuenta() ?></td>
-      <td><?php echo $adm_ma_docs_t->getActivo() ?></td>
+      <td><?php echo ($adm_ma_docs_t->getActivo())?"Si":"No" ?></td>
       <td class="acciones">
         <a class="btn" href="<?php echo url_for('adm_ma_docs_t/show?id='.$adm_ma_docs_t->getId()) ?>" title="Ver"><span class='icon-eye-open'></span></a>
         <a class="btn" href="<?php echo url_for('adm_ma_docs_t/edit?id='.$adm_ma_docs_t->getId()) ?>" title="Modificar"><span class='icon-pencil'></span></a>

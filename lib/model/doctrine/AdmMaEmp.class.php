@@ -12,4 +12,7 @@
  */
 class AdmMaEmp extends BaseAdmMaEmp
 {
+	public function __toString(){
+		return $this->getNombre();
+	}
 }

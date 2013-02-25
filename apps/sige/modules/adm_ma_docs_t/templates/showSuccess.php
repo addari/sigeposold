@@ -70,7 +70,7 @@
     </tr>
     <tr>
       <th class="columna-show">Activo:</th>
-      <td><?php echo $adm_ma_docs_t->getActivo() ?></td>
+      <td><?php echo ($adm_ma_docs_t->getActivo())?"Si":"No" ?></td>
     </tr>
   </tbody>
 </table>

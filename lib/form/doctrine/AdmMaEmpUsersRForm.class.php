@@ -12,5 +12,9 @@ class AdmMaEmpUsersRForm extends BaseAdmMaEmpUsersRForm
 {
   public function configure()
   {
+  	$this->widgetSchema->setLabels(array(
+      'id_empresa' => "Empresa",
+      'id_usuario' => "Usuario",
+    ));
   }
 }

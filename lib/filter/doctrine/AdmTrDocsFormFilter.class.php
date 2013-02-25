@@ -66,22 +66,21 @@ class AdmTrDocsFormFilter extends BaseAdmTrDocsFormFilter
                                                                                 )
                                             ))
 	));
-  
-	$this->widgetSchema->setLabels(array(
-    'id'                  => "Id. Documento",
-		'id_tipo'             => "Tipo de Documento",
-		'numero_documento'    => "Nro. de Documento",
-		'fecha_emision'       => "Fecha de Emisión",
-		'fecha_vencimiento'   => "Fecha de Vencimiento",
-		'contacto'            => "Cliente"
-		));
+
+    $this->widgetSchema->setLabels(array(
+      'id'                  => "Id. Documento",
+      'id_tipo'             => "Tipo de Documento",
+      'numero_documento'    => "Nro. de Documento",
+      'fecha_emision'       => "Fecha de Emisión",
+      'fecha_vencimiento'   => "Fecha de Vencimiento",
+      'contacto'            => "Cliente"
+    ));
 
     $this->widgetSchema->setNameFormat('filtro[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
     $this->setupInheritance();
-
   }
 
   public function getModelName()

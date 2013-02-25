@@ -2,7 +2,7 @@
 <form action="[?php echo url_for('<?php echo $this->getModuleName() ?>/filtrar') ?]" class="form-horizontal" method="post">
   <?php foreach ($form as $name => $field): if (($field->isHidden()) || ($name == "timestamp"))  continue ?>
   <div class="control-group">
-    [?php echo $form_filter['<?php echo $name ?>']->renderLabel(array(),array("class"=>"control-label")) ?]
+    [?php echo $form_filter['<?php echo $name ?>']->renderLabel(null,array("class"=>"control-label")) ?]
     <div class="controls">
     [?php echo $form_filter['<?php echo $name ?>'] ?]
     [?php echo $form_filter['<?php echo $name ?>']->renderError() ?]
